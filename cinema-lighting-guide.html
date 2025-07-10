@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide: Smart Cinema Lighting - Alex Berrios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #f3f4f6;
+        }
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .prose {
+            color: #d1d5db;
+        }
+        .prose h2, .prose h3, .prose strong { color: #fff; }
+        .prose a { color: #60a5fa; }
+        .prose a:hover { color: #93c5fd; }
+        .prose code {
+            background-color: #1f2937;
+            padding: 0.2em 0.4em;
+            margin: 0;
+            font-size: 85%;
+            border-radius: 3px;
+        }
+        .prose pre {
+            border-radius: 0.5rem;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 0.5rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="glass-nav sticky top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white">Guide: Cinema Lighting</h1>
+            <a href="home-assistant.html" class="text-gray-300 hover:text-white transition-colors">&larr; Back to Projects</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <article class="prose prose-lg max-w-4xl mx-auto">
+            <h2>Creating Smart Cinema Lighting Automations</h2>
+            <p>This guide will show you how to create a set of automations that dim the lights when a movie starts playing on an Apple TV, turn them on when paused, and adjust the color based on the streaming app in use.</p>
+            
+            <h3>Prerequisites</h3>
+            <ul>
+                <li><strong>Hardware:</strong> An Apple TV, and color-capable smart lights (e.g., Philips Hue, LIFX).</li>
+                <li><strong>Home Assistant Integrations:</strong> The <a href="https://www.home-assistant.io/integrations/apple_tv/" target="_blank" rel="noopener noreferrer">Apple TV</a> integration and the integration for your smart lights must be configured.</li>
+            </ul>
+
+            <h3>Key Entities and States</h3>
+            <p>Before building, identify your entities in <strong>Developer Tools &gt; States</strong>.</p>
+            <ul>
+                <li><strong>Media Player:</strong> <code>media_player.apple_tv_family_room</code> (your name may vary). We'll use the <code>playing</code> and <code>paused</code> states, and the <code>app_name</code> attribute.</li>
+                <li><strong>Lights:</strong> <code>light.family_room_lights</code> and <code>light.ambient_lightstrip</code> (your names may vary). We'll control <code>brightness</code> and <code>rgb_color</code>.</li>
+            </ul>
+
+            <hr class="my-12 border-gray-700">
+
+            <h3>Automation Guide (GUI Mode)</h3>
+            <p>We'll create two separate automations for simple management.</p>
+
+            <h4>1. Movie Playing: Dim Lights</h4>
+            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Trigger+Configuration" alt="[Screenshot of the trigger configuration in the HA GUI]" class="rounded-lg my-4">
+            <p>Create an automation that triggers when the Apple TV state changes to <code>playing</code>. In the actions, use a "Choose" block to create different sequences based on the <code>app_name</code> attribute (e.g., one for "Netflix" and another for "Hulu").</p>
+
+            <h4>2. Movie Paused: Brighten Lights</h4>
+            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Action+Configuration" alt="[Screenshot of the action configuration in the HA GUI]" class="rounded-lg my-4">
+            <p>Create a second automation that triggers when the Apple TV state changes to <code>paused</code>. The action should be a simple service call to turn on your main lights to a comfortable brightness.</p>
+
+            <hr class="my-12 border-gray-700">
+
+            <h3>YAML Configuration</h3>
+            <p>For those who prefer code, here is the complete YAML configuration for both automations. You can add this to your <code>automations.yaml</code> file.</p>
+            
+            <pre><code class="language-yaml">
+# automations.yaml
+
+- alias: "Cinema - Movie Playing"
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv_family_room
+      to: "playing"
+  action:
+    - choose:
+        # Option for Netflix
+        - conditions:
+            - condition: state
+              entity_id: media_player.apple_tv_family_room
+              attribute: app_name
+              state: "Netflix"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.ambient_lightstrip
+              data:
+                rgb_color: [255, 0, 0] # Red
+                brightness_pct: 50
+            - service: light.turn_on
+              target:
+                entity_id: light.family_room_lights
+              data:
+                brightness_pct: 10
+      # Default option for other apps
+      default:
+        - service: light.turn_off
+          target:
+            entity_id: light.family_room_lights
+
+- alias: "Cinema - Movie Paused"
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv_family_room
+      to: "paused"
+  action:
+    - service: light.turn_on
+      target:
+        entity_id: light.family_room_lights
+      data:
+        brightness_pct: 80
+        transition: 1
+            </code></pre>
+
+            <hr class="my-12 border-gray-700">
+
+            <h3>References and Resources</h3>
+            <p>To dive deeper, check out these official documents and community tutorials.</p>
+            <ul>
+                <li><strong>Official Documentation:</strong>
+                    <ul>
+                        <li><a href="https://www.home-assistant.io/integrations/apple_tv/" target="_blank" rel="noopener noreferrer">Apple TV Integration Docs</a></li>
+                        <li><a href="https://www.home-assistant.io/integrations/hue/" target="_blank" rel="noopener noreferrer">Philips Hue Integration Docs</a></li>
+                        <li><a href="https://www.home-assistant.io/docs/automation/trigger/" target="_blank" rel="noopener noreferrer">Automation Triggers</a></li>
+                    </ul>
+                </li>
+                <li><strong>YouTube Tutorial:</strong>
+                    <p>This video provides a great visual overview of creating home theater scenes and automations.</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/6jnaDt5C8Ys" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 mt-16">
+        <div class="container mx-auto text-center text-gray-500">
+            <p>&copy; 2024 Alex Berrios. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-yaml.min.js"></script>
+</body>
+</html>
