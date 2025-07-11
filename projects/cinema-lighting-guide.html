@@ -4,60 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guide: Smart Cinema Lighting - Alex Berrios</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet (for common styles like nav, footer, etc.) -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Guide-specific Stylesheet (for prose, code blocks, etc.) -->
+    <link rel="stylesheet" href="css/guide.css">
+    
+    <!-- Prism.js for code highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000;
-            color: #f3f4f6;
-        }
-        .glass-nav {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .prose {
-            color: #d1d5db;
-        }
-        .prose h2, .prose h3, .prose strong { color: #fff; }
-        .prose a { color: #60a5fa; }
-        .prose a:hover { color: #93c5fd; }
-        .prose code {
-            background-color: #1f2937;
-            padding: 0.2em 0.4em;
-            margin: 0;
-            font-size: 85%;
-            border-radius: 3px;
-        }
-        .prose pre {
-            border-radius: 0.5rem;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
-            border-radius: 0.5rem;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
     <header class="glass-nav sticky top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-xl font-bold text-white">Guide: Cinema Lighting</h1>
@@ -78,29 +42,39 @@
             </ul>
 
             <h3>Key Entities and States</h3>
-            <p>Before building, identify your entities in <strong>Developer Tools &gt; States</strong>.</p>
+            <p>Before building the automation, it's crucial to understand the entities we'll be working with. You can find their exact names under <strong>Developer Tools &gt; States</strong>.</p>
             <ul>
-                <li><strong>Media Player:</strong> <code>media_player.apple_tv_family_room</code> (your name may vary). We'll use the <code>playing</code> and <code>paused</code> states, and the <code>app_name</code> attribute.</li>
-                <li><strong>Lights:</strong> <code>light.family_room_lights</code> and <code>light.ambient_lightstrip</code> (your names may vary). We'll control <code>brightness</code> and <code>rgb_color</code>.</li>
+                <li><strong>Media Player:</strong> <code>media_player.apple_tv_family_room</code> (your name may vary).
+                    <ul>
+                        <li><strong>State:</strong> We are interested in the <code>playing</code> and <code>paused</code> states.</li>
+                        <li><strong>Attribute:</strong> <code>app_name</code> will tell us which application is running (e.g., "Netflix", "Hulu").</li>
+                    </ul>
+                </li>
+                <li><strong>Lights:</strong> <code>light.family_room_lights</code> and <code>light.ambient_lightstrip</code> (your names may vary).
+                    <ul>
+                        <li><strong>State:</strong> <code>on</code> and <code>off</code>.</li>
+                        <li><strong>Attributes:</strong> <code>brightness</code>, <code>rgb_color</code>.</li>
+                    </ul>
+                </li>
             </ul>
 
             <hr class="my-12 border-gray-700">
 
             <h3>Automation Guide (GUI Mode)</h3>
-            <p>We'll create two separate automations for simple management.</p>
+            <p>We'll create two separate automations for easier management.</p>
 
             <h4>1. Movie Playing: Dim Lights</h4>
-            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Trigger+Configuration" alt="[Screenshot of the trigger configuration in the HA GUI]" class="rounded-lg my-4">
+            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Trigger+Configuration" alt="[Captura de pantalla de la configuración del disparador en la GUI de HA]" class="rounded-lg my-4">
             <p>Create an automation that triggers when the Apple TV state changes to <code>playing</code>. In the actions, use a "Choose" block to create different sequences based on the <code>app_name</code> attribute (e.g., one for "Netflix" and another for "Hulu").</p>
 
             <h4>2. Movie Paused: Brighten Lights</h4>
-            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Action+Configuration" alt="[Screenshot of the action configuration in the HA GUI]" class="rounded-lg my-4">
+            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Action+Configuration" alt="[Captura de pantalla de la configuración de la acción en la GUI de HA]" class="rounded-lg my-4">
             <p>Create a second automation that triggers when the Apple TV state changes to <code>paused</code>. The action should be a simple service call to turn on your main lights to a comfortable brightness.</p>
 
             <hr class="my-12 border-gray-700">
 
             <h3>YAML Configuration</h3>
-            <p>For those who prefer code, here is the complete YAML configuration for both automations. You can add this to your <code>automations.yaml</code> file.</p>
+            <p>For those who prefer code, here are the same automations in YAML format. You can add them to your <code>automations.yaml</code> file.</p>
             
             <pre><code class="language-yaml">
 # automations.yaml

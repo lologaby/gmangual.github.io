@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide: Multi-Click Tasmota Switches - Alex Berrios</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet (for common styles like nav, footer, etc.) -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Guide-specific Stylesheet (for prose, code blocks, etc.) -->
+    <link rel="stylesheet" href="css/guide.css">
+
+    <!-- Prism.js for code highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css">
+</head>
+<body class="antialiased">
+
+    <header class="glass-nav sticky top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white">Guide: Tasmota Switches</h1>
+            <a href="home-assistant.html" class="text-gray-300 hover:text-white transition-colors">&larr; Back to Projects</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <article class="prose prose-lg max-w-4xl mx-auto">
+            <h2>Unlocking Switches with Tasmota for Multi-Click Actions</h2>
+            <p>This guide outlines how to flash custom Tasmota firmware onto a commercial smart switch (like those from Merkury/Walmart) to gain local control and create powerful multi-click automations in Home Assistant.</p>
+            
+            <div class="warning">
+                <p><strong>Disclaimer:</strong> This process involves opening electronic devices and overwriting their factory firmware. There is a risk of damaging your device. Proceed at your own risk and always disconnect the device from mains power before opening it.</p>
+            </div>
+
+            <h3>Part 1: Flashing Tasmota</h3>
+            <p>The flashing process can vary greatly between devices. Before purchasing or attempting to flash any device, it is crucial to verify its compatibility. The <strong><a href="https://templates.blakadder.com/" target="_blank" rel="noopener noreferrer">Blakadder Tasmota Device Repository</a></strong> is the definitive community-run database for this.</p>
+            <p>Once you have confirmed your device is compatible, you can proceed. The most common method for Tuya devices is using a tool like <a href="https://github.com/tasmota/tasmotizer" target="_blank" rel="noopener noreferrer">Tasmotizer</a>. This typically involves soldering temporary wires to the ESP8266 chip's serial pins inside the switch to connect your USB-to-serial adapter.</p>
+            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Diagrama+de+pines+del+ESP8266+para+flasheo" alt="[Diagrama de pines del ESP8266 para flasheo]" class="rounded-lg my-4">
+
+            <h3>Part 2: Configuring Multi-Press Actions in Tasmota</h3>
+            <p>Once Tasmota is installed, connect it to your Wi-Fi and access its web interface. To enable multi-press functionality, you need to use Tasmota's powerful `Rules` feature. First, access the Tasmota Console.</p>
+            <ol>
+                <li><strong>Decouple the button from the relay:</strong> This prevents a single click from always toggling the physical relay, giving Home Assistant full control.
+                    <pre><code class="language-bash">SetOption73 1</code></pre>
+                </li>
+                <li><strong>Create the rules:</strong> We will create rules that publish a specific MQTT message for each type of click.
+                    <pre><code class="language-bash">Rule1 ON Button1#State=10 DO Backlog publish stat/tasmota_switch/BUTTON1 SINGLE ENDON ON Button1#State=11 DO Backlog publish stat/tasmota_switch/BUTTON1 DOUBLE ENDON ON Button1#State=12 DO Backlog publish stat/tasmota_switch/BUTTON1 TRIPLE ENDON ON Button1#State=3 DO Backlog publish stat/tasmota_switch/BUTTON1 HOLD ENDON</code></pre>
+                </li>
+                 <li><strong>Enable the rule:</strong>
+                    <pre><code class="language-bash">Rule1 1</code></pre>
+                </li>
+            </ol>
+            <p>This rule tells the switch to send `SINGLE`, `DOUBLE`, `TRIPLE`, or `HOLD` to the MQTT topic `stat/tasmota_switch/BUTTON1` depending on how the button is pressed.</p>
+
+            <h3>Part 3: Home Assistant Automation</h3>
+            <p>Now, we'll create an automation in Home Assistant to listen to these MQTT messages and perform different actions.</p>
+             <img src="https://placehold.co/800x400/111827/FFFFFF?text=Captura+de+pantalla:+Automatización+en+la+GUI+de+HA" alt="[Captura de pantalla de la automatización en la GUI de HA]" class="rounded-lg my-4">
+            
+            <h4>YAML Configuration</h4>
+            <p>Go to <strong>Settings > Automations & Scenes</strong> and create a new automation. You can build it in the GUI or paste the following YAML code by clicking the 3-dot menu and selecting "Edit in YAML".</p>
+            <pre><code class="language-yaml">
+# automations.yaml
+
+- alias: "Control de Oficina con Interruptor Multi-Clic"
+  id: office_control_multi_click_switch
+  trigger:
+    - platform: mqtt
+      topic: "stat/tasmota_switch/BUTTON1"
+  action:
+    - choose:
+        # Acción para 1 Clic: Alternar la luz principal
+        - conditions:
+            - condition: trigger
+              payload: "SINGLE"
+          sequence:
+            - service: light.toggle
+              target:
+                entity_id: light.luz_principal_oficina
+
+        # Acción para Mantener Presionado: Encender el ventilador
+        - conditions:
+            - condition: trigger
+              payload: "HOLD"
+          sequence:
+            - service: switch.turn_on
+              target:
+                entity_id: switch.ventilador_oficina
+
+        # Acción para 3 Clics: Activar Escena "Modo Trabajo"
+        - conditions:
+            - condition: trigger
+              payload: "TRIPLE"
+          sequence:
+            # 1. Encender la PC vía Wake-on-LAN
+            - service: wake_on_lan.send_magic_packet
+              data:
+                mac: "AA:BB:CC:DD:EE:FF" # Reemplaza con la MAC de tu PC
+            # 2. Encender el ventilador
+            - service: switch.turn_on
+              target:
+                entity_id: switch.ventilador_oficina
+            # 3. Activar una escena de luces
+            - service: scene.turn_on
+              target:
+                entity_id: scene.escena_trabajo_concentrado
+      # Acción por defecto (opcional): podría ser para 2 clics
+      default:
+        - service: light.toggle
+          target:
+            entity_id: light.lampara_escritorio
+            </code></pre>
+            <p>With this setup, one physical switch is transformed into a powerful, multi-functional control panel for any device or scene in your Home Assistant instance.</p>
+            
+            <hr class="my-12 border-gray-700">
+
+            <h3>References and Resources</h3>
+            <p>For more in-depth information, explore these official resources and community guides.</p>
+            <ul>
+                <li><strong>Official Documentation:</strong>
+                    <ul>
+                        <li><a href="https://tasmota.github.io/docs/" target="_blank" rel="noopener noreferrer">Tasmota Documentation</a></li>
+                        <li><a href="https://tasmota.github.io/docs/Rules/" target="_blank" rel="noopener noreferrer">Tasmota Rules Cookbook</a></li>
+                        <li><a href="https://www.home-assistant.io/integrations/mqtt/" target="_blank" rel="noopener noreferrer">Home Assistant MQTT Integration</a></li>
+                    </ul>
+                </li>
+                <li><strong>GitHub Repositories:</strong>
+                    <ul>
+                        <li><a href="https://github.com/arendst/Tasmota" target="_blank" rel="noopener noreferrer">Tasmota Firmware</a></li>
+                        <li><a href="https://github.com/tasmota/tasmotizer" target="_blank" rel="noopener noreferrer">Tasmotizer Flashing Tool</a></li>
+                    </ul>
+                </li>
+                 <li><strong>YouTube Tutorial:</strong>
+                    <p>This video offers a solid introduction to getting started with Tasmota and Home Assistant.</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/f_t3aB6noa8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 mt-16">
+        <div class="container mx-auto text-center text-gray-500">
+            <p>&copy; 2024 Alex Berrios. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-yaml.min.js"></script>
+</body>
+</html>

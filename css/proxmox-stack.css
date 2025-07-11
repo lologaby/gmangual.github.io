@@ -1,0 +1,64 @@
+/* Estilos Generales del Cuerpo */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0a0a;
+    color: #f3f4f6;
+}
+
+/* Barra de Navegación con Efecto de Vidrio */
+.glass-nav {
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos del Árbol D3 */
+.node {
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.node:hover > rect {
+    stroke-width: 2.5;
+    stroke: #38bdf8; /* light-blue-400 */
+}
+
+.node-rect {
+    stroke-width: 1.5;
+    rx: 8;
+    ry: 8;
+    fill: rgba(17, 24, 39, 0.7); /* gray-900/70 */
+}
+
+.node-text {
+    fill: #f3f4f6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    pointer-events: none; /* Hace que el texto no sea interactivo */
+}
+
+.link {
+    fill: none;
+    stroke: #4b5563; /* gray-600 */
+    stroke-width: 2px;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    background: #1f2937; /* gray-800 */
+    border: 1px solid #374151; /* gray-700 */
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.expand-indicator {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 24px;
+    fill: #9ca3af;
+}
