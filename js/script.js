@@ -133,17 +133,6 @@ function moveShape(scrollPos) {
     }
 }
 
-document.addEventListener('scroll', () => {
-    lastKnownScrollPosition = window.scrollY;
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            moveShape(lastKnownScrollPosition);
-            ticking = false;
-        });
-        ticking = true;
-    }
-});
-
 const clock = new THREE.Clock();
 function animate() {
     requestAnimationFrame(animate);
@@ -164,6 +153,50 @@ window.addEventListener('resize', () => {
 // --- Scripts de la Página ---
 document.addEventListener('DOMContentLoaded', function() {
     
+    // --- Lógica de Sonido con Tone.js ---
+    let isSoundEnabled = false;
+    let audioStarted = false;
+    const synth = new Tone.Synth({
+        oscillator: { type: 'triangle' },
+        envelope: { attack: 0.01, decay: 0.2, sustain: 0.1, release: 0.5 }
+    }).toDestination();
+    
+    const soundBtn = document.getElementById('sound-toggle-btn');
+    const iconSoundOn = document.getElementById('icon-sound-on');
+    const iconSoundOff = document.getElementById('icon-sound-off');
+
+    if (soundBtn) {
+        soundBtn.addEventListener('click', async () => {
+            if (!audioStarted) {
+                await Tone.start();
+                audioStarted = true;
+                console.log('Audio context started');
+            }
+            isSoundEnabled = !isSoundEnabled;
+            iconSoundOn.classList.toggle('hidden', !isSoundEnabled);
+            iconSoundOff.classList.toggle('hidden', isSoundEnabled);
+        });
+    }
+
+    let lastScrollY = window.scrollY;
+    let scrollTimeout;
+    document.addEventListener('scroll', () => {
+        if (!isSoundEnabled) return;
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const currentScrollY = window.scrollY;
+            const now = Tone.now();
+            if (currentScrollY > lastScrollY) {
+                synth.triggerAttackRelease('C2', '8n', now); // Tono más bajo al bajar
+            } else if (currentScrollY < lastScrollY) {
+                synth.triggerAttackRelease('G2', '8n', now); // Tono más alto al subir
+            }
+            lastScrollY = currentScrollY;
+        }, 150); // Throttle para no saturar de sonidos
+    });
+
+
     // --- Lógica del Menú Móvil ---
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');

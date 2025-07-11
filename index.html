@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex G. Berrios Mangual - Portfolio</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="antialiased">
@@ -20,12 +17,10 @@
     <div class="content-wrapper">
         <header class="glass-nav fixed top-0 left-0 right-0 z-50">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <!-- Interactive Logo -->
                 <div id="logo-container" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
                     <img src="assets/logote.svg" alt="Logo" style="width: 100px; height: 41px;">
                 </div>
                 
-                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-4">
                     <nav class="flex items-center space-x-4">
                         <a href="#about" class="ui-btn"><span>About</span></a>
@@ -33,35 +28,33 @@
                         <a href="#projects" class="ui-btn"><span>Projects</span></a>
                         <a href="#contact" class="ui-btn"><span>Contact</span></a>
                     </nav>
-                    <!-- LinkedIn button (moved to the left) -->
-                    <a href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer">
-                       <button class="LinkedinBtn">
-                          <span class="svgContainer">
-                            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-                          </span>
-                          <span class="BG"></span>
-                        </button>
-                    </a>
-                    <!-- GitHub button (now on the right) -->
-                    <a href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer">
-                        <button class="cssbuttons-io">
-                          <span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M0 0h24v24H0z" fill="none"></path>
-                              <path d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z" fill="currentColor"></path>
-                            </svg>
-                            Code</span>
-                        </button>
-                    </a>
+                    <div class="flex items-center space-x-4 pl-4 border-l border-gray-700">
+                        <a href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer">
+                           <button class="LinkedinBtn">
+                              <span class="svgContainer">
+                                <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                              </span>
+                              <span class="BG"></span>
+                            </button>
+                        </a>
+                        <a href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer">
+                            <button class="cssbuttons-io">
+                              <span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M0 0h24v24H0z" fill="none"></path>
+                                  <path d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z" fill="currentColor"></path>
+                                </svg>
+                                Code</span>
+                            </button>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-toggle" class="text-white p-2 focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                     </button>
                 </div>
             </div>
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden bg-black/80 backdrop-blur-sm">
                 <nav class="flex flex-col items-center space-y-4 py-6">
                     <a href="#about" class="ui-btn"><span>About</span></a>
@@ -144,9 +137,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Download Resume Button -->
                     <div class="mt-16 text-center reveal" style="position: relative; top: 2rem;">
-                        <!-- MODIFIED: removed 'download' and added 'target="_blank"' -->
                         <a href="resume/resume.pdf" target="_blank" rel="noopener noreferrer">
                             <button class="download-button">
                               <div class="docs">
@@ -239,10 +230,17 @@
         <div id="skill-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
         </div>
     </div>
+    
+    <div id="sound-container">
+        <button id="sound-toggle-btn" class="sound-btn" aria-label="Toggle Sound">
+            <svg id="icon-sound-off" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" /></svg>
+            <svg id="icon-sound-on" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" /></svg>
+        </button>
+    </div>
 
-    <!-- Librerías de JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
