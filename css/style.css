@@ -140,7 +140,7 @@ body {
   --btn-animation-duration: 1.2s;
   --btn-shadow-color: rgba(0, 0, 0, 0.137);
   --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
-  --hover-btn-color: #FAC921;
+  --hover-btn-color: #1ceb3f;
   --default-btn-color: #fff;
   --font-size: 14px;
   --font-weight: 600;
