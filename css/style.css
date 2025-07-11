@@ -134,3 +134,85 @@ body {
     transform: translateY(0) scale(1);
     opacity: 1;
 }
+
+/* Estilos del Botón de GitHub */
+.github-button {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.github-button .shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.github-button .edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(220deg 15% 20%) 0%,
+    hsl(220deg 15% 30%) 8%,
+    hsl(220deg 15% 30%) 92%,
+    hsl(220deg 15% 20%) 100%
+  );
+}
+
+.github-button .front {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid hsl(220deg 15% 40%);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  color: white;
+  background: hsl(220deg 15% 25%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.github-button:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.github-button:hover .front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.github-button:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.github-button:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.github-button:focus:not(:focus-visible) {
+  outline: none;
+}
