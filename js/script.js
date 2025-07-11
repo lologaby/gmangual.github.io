@@ -32,19 +32,19 @@ const logoGroup = new THREE.Group();
 mainGroup.add(logoGroup);
 
 const textureLoader = new THREE.TextureLoader();
+// --- LISTA DE LOGOS ACTUALIZADA ---
 const skillLogos = [
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Proxmox_logo.svg/1024px-Proxmox_logo.svg.png',
-    'https://cdn.worldvectorlogo.com/logos/docker.svg', 
-    'https://cdn.worldvectorlogo.com/logos/linux-tux-2.svg', 
-    'https://cdn.worldvectorlogo.com/logos/vmware.svg', 
-    'https://cdn.worldvectorlogo.com/logos/cisco-2.svg', 
-    'https://cdn.worldvectorlogo.com/logos/python-5.svg', 
-    'https://cdn.worldvectorlogo.com/logos/powershell.svg', 
-    'https://cdn.worldvectorlogo.com/logos/aws-2.svg', 
-    'https://cdn.worldvectorlogo.com/logos/azure-1.svg', 
-    'https://1000logos.net/wp-content/uploads/2023/02/Fortinet-logo.png',
-    'https://cdn.worldvectorlogo.com/logos/mikrotik.svg', 
-    'https://cdn.worldvectorlogo.com/logos/solarwinds.svg'
+    'https://cdn.worldvectorlogo.com/logos/bash-1.svg',
+    'https://cdn.worldvectorlogo.com/logos/docker.svg',
+    'https://cdn.worldvectorlogo.com/logos/home-assistant.svg',
+    'https://cdn.worldvectorlogo.com/logos/mikrotik.svg',
+    'https://images.seeklogo.com/logo-png/49/1/proxmox-logo-png_seeklogo-498509.png',
+    'https://cdn.worldvectorlogo.com/logos/red-hat-1.svg',
+    'https://cdn.worldvectorlogo.com/logos/solarwinds.svg',
+    'https://cdn.worldvectorlogo.com/logos/ubuntu-4.svg',
+    'https://cdn.worldvectorlogo.com/logos/vmware.svg',
+    'https://cdn.worldvectorlogo.com/logos/windows-8.svg',
+    'https://cdn.worldvectorlogo.com/logos/zabbix.svg',
 ];
 
 function createVertexDot(position, color) {

@@ -81,6 +81,12 @@
             <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
                 This project transforms a standard media server into a dynamic hub for digital preservation and a platform for emulating nostalgic broadcast television, all powered by a suite of automated tools.
             </p>
+            <!-- Plex Invite Button -->
+            <div class="mt-8">
+                <a href="http://70.45.236.37:5690/j/ALWAYSON" target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-500 text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition-colors duration-300 transform hover:scale-105">
+                    Join Plex Server
+                </a>
+            </div>
         </section>
         
         <!-- Projects Grid -->
@@ -252,7 +258,7 @@
                             slider.scrollLeft = 0;
                         }
                     }
-                }, 25);
+                }, 25); // Adjust speed here
             };
 
             const stopAutoScroll = () => {
@@ -264,7 +270,7 @@
             slider.addEventListener('wheel', (e) => {
                 e.preventDefault();
                 slider.scrollLeft += e.deltaY;
-                isPaused = true;
+                isPaused = true; // Pause on manual scroll
             });
             
             startAutoScroll();
