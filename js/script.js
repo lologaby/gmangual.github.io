@@ -148,6 +148,25 @@ window.addEventListener('resize', () => {
 
 // --- Scripts de la Página ---
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- Lógica del Menú Móvil ---
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Opcional: cerrar el menú al hacer clic en un enlace
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+
+    // --- Lógica de la Terminal ---
     const terminalCommand = document.getElementById('terminal-command');
     const commandText = "$~: whoami";
     const outputText = "Alex G. Berrios Mangual";
@@ -163,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startTerminal() {
+        if(!terminalCommand || !cursor) return;
         cursor.style.animation = 'none';
         typeWriter(commandText, terminalCommand, 0, () => {
             setTimeout(() => {
@@ -176,6 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startTerminal();
 
+    // --- Lógica de Revelado al Hacer Scroll ---
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -272,50 +293,62 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const skillsSlider = document.getElementById('skills-slider');
-    skills.forEach(skill => {
-        const skillElement = document.createElement('div');
-        skillElement.className = 'skill-item flex-shrink-0 flex flex-col items-center justify-center space-y-3 p-4 bg-gray-800/50 backdrop-blur-sm rounded-2xl w-32 h-32 md:w-40 md:h-40 transition-transform hover:scale-105 cursor-pointer';
-        skillElement.dataset.name = skill.name;
-        skillElement.dataset.description = skill.description;
-        
-        const img = document.createElement('img');
-        img.src = skill.logo;
-        img.alt = skill.name;
-        img.className = 'h-12 w-12 md:h-16 md-w-16 object-contain pointer-events-none';
-        img.onerror = function() {
-            this.onerror=null;
-            const placeholder = document.createElement('div');
-            placeholder.className = 'h-12 w-12 md:h-16 md-w-16 bg-gray-700 rounded-full flex items-center justify-center pointer-events-none';
-            placeholder.innerHTML = `<span class="text-white text-xs font-bold">${skill.name.substring(0, 2)}</span>`;
-            this.parentNode.replaceChild(placeholder, this);
-        };
+    if (skillsSlider) {
+        skills.forEach(skill => {
+            const skillElement = document.createElement('div');
+            skillElement.className = 'skill-item flex-shrink-0 flex flex-col items-center justify-center space-y-3 p-4 bg-gray-800/50 backdrop-blur-sm rounded-2xl w-32 h-32 md:w-40 md:h-40 transition-transform hover:scale-105 cursor-pointer';
+            skillElement.dataset.name = skill.name;
+            skillElement.dataset.description = skill.description;
+            
+            const img = document.createElement('img');
+            img.src = skill.logo;
+            img.alt = skill.name;
+            img.className = 'h-12 w-12 md:h-16 md-w-16 object-contain pointer-events-none';
+            img.onerror = function() {
+                this.onerror=null;
+                const placeholder = document.createElement('div');
+                placeholder.className = 'h-12 w-12 md:h-16 md-w-16 bg-gray-700 rounded-full flex items-center justify-center pointer-events-none';
+                placeholder.innerHTML = `<span class="text-white text-xs font-bold">${skill.name.substring(0, 2)}</span>`;
+                this.parentNode.replaceChild(placeholder, this);
+            };
 
-        const name = document.createElement('p');
-        name.textContent = skill.name;
-        name.className = 'text-white text-sm md:text-base font-medium text-center pointer-events-none';
+            const name = document.createElement('p');
+            name.textContent = skill.name;
+            name.className = 'text-white text-sm md:text-base font-medium text-center pointer-events-none';
 
-        skillElement.appendChild(img);
-        skillElement.appendChild(name);
-        skillsSlider.appendChild(skillElement);
-    });
+            skillElement.appendChild(img);
+            skillElement.appendChild(name);
+            skillsSlider.appendChild(skillElement);
+        });
+    }
     
-    // --- Lógica del Modal ---
+    // --- Lógica del Modal de Habilidades ---
     const modal = document.getElementById('skill-modal');
     let isDragging = false;
-    let isDown = false; // Añadido para el carrusel
-    skillsSlider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        isDragging = false;
-    });
-    skillsSlider.addEventListener('mousemove', () => { if (isDown) isDragging = true; });
-    skillsSlider.addEventListener('mouseup', () => isDown = false);
-    skillsSlider.addEventListener('mouseleave', () => isDown = false);
-    skillsSlider.addEventListener('touchstart', (e) => {
-        isDown = true;
-        isDragging = false;
-    });
-    skillsSlider.addEventListener('touchmove', () => { if (isDown) isDragging = true; });
-    skillsSlider.addEventListener('touchend', () => isDown = false);
+    let isDown = false;
+    if (skillsSlider) {
+        skillsSlider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            isDragging = false;
+        });
+        skillsSlider.addEventListener('mousemove', () => { if (isDown) isDragging = true; });
+        skillsSlider.addEventListener('mouseup', () => isDown = false);
+        skillsSlider.addEventListener('mouseleave', () => isDown = false);
+        skillsSlider.addEventListener('touchstart', (e) => {
+            isDown = true;
+            isDragging = false;
+        });
+        skillsSlider.addEventListener('touchmove', () => { if (isDown) isDragging = true; });
+        skillsSlider.addEventListener('touchend', () => isDown = false);
+
+        skillsSlider.addEventListener('click', (e) => {
+            if (isDragging) return;
+            const skillItem = e.target.closest('.skill-item');
+            if (skillItem) {
+                openModal(skillItem.dataset.name, skillItem.dataset.description);
+            }
+        });
+    }
 
     const openModal = (name, description) => {
         if(!modal) return;
@@ -340,14 +373,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
     };
 
-    skillsSlider.addEventListener('click', (e) => {
-        if (isDragging) return;
-        const skillItem = e.target.closest('.skill-item');
-        if (skillItem) {
-            openModal(skillItem.dataset.name, skillItem.dataset.description);
-        }
-    });
-    if(modal) modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
+    if(modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
 });
