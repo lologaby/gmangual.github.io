@@ -57,8 +57,8 @@ This website is built with the following stack and tools:
 
 Feel free to reach out if you're interested in my work or want to collaborate.
 
-**Email**: [AGBM97@icloud.com](mailto:AGBM97@icloud.com)  
-**LinkedIn**: [linkedin.com/in/alexberrios](https://www.linkedin.com/in/alexberrios)
+**Email**: [agbm97@icloud.com](mailto:AGBM97@icloud.com)  
+**LinkedIn**: [linkedin.com/in/alexberrios](https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241/)
 
 ---
 
