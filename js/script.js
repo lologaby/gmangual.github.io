@@ -32,19 +32,19 @@ const logoGroup = new THREE.Group();
 mainGroup.add(logoGroup);
 
 const textureLoader = new THREE.TextureLoader();
-// --- LISTA DE LOGOS ACTUALIZADA ---
+// --- LISTA DE LOGOS ACTUALIZADA para usar archivos locales ---
 const skillLogos = [
-    'https://cdn.worldvectorlogo.com/logos/bash-1.svg',
-    'https://cdn.worldvectorlogo.com/logos/docker.svg',
-    'https://cdn.worldvectorlogo.com/logos/home-assistant.svg',
-    'https://cdn.worldvectorlogo.com/logos/mikrotik.svg',
-    'https://images.seeklogo.com/logo-png/49/1/proxmox-logo-png_seeklogo-498509.png',
-    'https://cdn.worldvectorlogo.com/logos/red-hat-1.svg',
-    'https://cdn.worldvectorlogo.com/logos/solarwinds.svg',
-    'https://cdn.worldvectorlogo.com/logos/ubuntu-4.svg',
-    'https://cdn.worldvectorlogo.com/logos/vmware.svg',
-    'https://cdn.worldvectorlogo.com/logos/windows-8.svg',
-    'https://cdn.worldvectorlogo.com/logos/zabbix.svg',
+    'assets/bash.svg',
+    'assets/docker.svg',
+    'assets/home-assistant.svg',
+    'assets/mikrotik.svg',
+    'assets/proxmox.png',
+    'assets/red-hat.svg',
+    'assets/solarwinds.svg',
+    'assets/ubuntu.svg',
+    'assets/vmware.svg',
+    'assets/windows.svg',
+    'assets/zabbix.svg',
 ];
 
 function createVertexDot(position, color) {
@@ -62,29 +62,44 @@ function createLogoPlane(url, position) {
         const logoPlane = new THREE.Mesh(logoGeometry, logoMaterial);
         logoPlane.position.copy(position);
         logoGroup.add(logoPlane);
-    }, undefined, () => {});
+    }, undefined, () => {
+        console.error(`Error al cargar la imagen: ${url}. Asegúrate de que el archivo exista en la carpeta /assets.`);
+    });
 }
 
 function updateMarkers() {
+    // Clear existing logos and markers
     while(vertexMarkersGroup.children.length > 0){ 
         vertexMarkersGroup.remove(vertexMarkersGroup.children[0]); 
     }
     while(logoGroup.children.length > 0){ 
         logoGroup.remove(logoGroup.children[0]); 
     }
+
     const currentGeometry = geometries[currentGeomIndex];
     const vertices = currentGeometry.attributes.position.array;
-    const uniqueVertices = [];
+    
+    // --- CORRECTED: Robust de-duplication logic ---
+    const uniqueVerticesMap = new Map();
     for (let i = 0; i < vertices.length; i += 3) {
-        const vertex = new THREE.Vector3(vertices[i], vertices[i+1], vertices[i+2]);
-        if (!uniqueVertices.some(v => v.equals(vertex))) {
-            uniqueVertices.push(vertex);
+        const x = vertices[i];
+        const y = vertices[i+1];
+        const z = vertices[i+2];
+        // Create a key by rounding coordinates to avoid floating point inaccuracies
+        const key = `${x.toFixed(4)},${y.toFixed(4)},${z.toFixed(4)}`;
+        
+        if (!uniqueVerticesMap.has(key)) {
+            uniqueVerticesMap.set(key, new THREE.Vector3(x, y, z));
         }
     }
+    const uniqueVertices = Array.from(uniqueVerticesMap.values());
+    // --- END: Correction ---
+
     uniqueVertices.forEach((vertex, index) => {
         const color = dotColors[index % dotColors.length];
         createVertexDot(vertex, color);
         
+        // Place logos on the vertices
         if (index < skillLogos.length) {
             const logoUrl = skillLogos[index];
             const position = vertex.clone().multiplyScalar(1.15);

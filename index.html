@@ -26,14 +26,23 @@
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-6">
+                <div class="hidden md:flex items-center space-x-4">
                     <nav class="flex items-center space-x-4">
                         <a href="#about" class="ui-btn"><span>About</span></a>
                         <a href="#skills" class="ui-btn"><span>Skills</span></a>
                         <a href="#projects" class="ui-btn"><span>Projects</span></a>
                         <a href="#contact" class="ui-btn"><span>Contact</span></a>
                     </nav>
-                    <!-- GitHub button with its original style, wrapped in an anchor tag -->
+                    <!-- LinkedIn button (moved to the left) -->
+                    <a href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer">
+                       <button class="LinkedinBtn">
+                          <span class="svgContainer">
+                            <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                          </span>
+                          <span class="BG"></span>
+                        </button>
+                    </a>
+                    <!-- GitHub button (now on the right) -->
                     <a href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer">
                         <button class="cssbuttons-io">
                           <span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,6 +70,9 @@
                     <a href="#contact" class="ui-btn"><span>Contact</span></a>
                     <a href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer" class="ui-btn">
                         <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer" class="ui-btn">
+                        <span>LinkedIn</span>
                     </a>
                 </nav>
             </div>
@@ -133,8 +145,9 @@
                         </div>
                     </div>
                     <!-- Download Resume Button -->
-                    <div class="mt-16 text-center reveal" style="position: relative; top: 2rem;"> <!-- Ajusta el valor 'top' para mover el botón -->
-                        <a href="resume/resume.pdf" download>
+                    <div class="mt-16 text-center reveal" style="position: relative; top: 2rem;">
+                        <!-- MODIFIED: removed 'download' and added 'target="_blank"' -->
+                        <a href="resume/resume.pdf" target="_blank" rel="noopener noreferrer">
                             <button class="download-button">
                               <div class="docs">
                                 <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="currentColor" height="20" width="20" viewBox="0 0 24 24">
@@ -193,7 +206,7 @@
                         <div class="bg-gray-900 rounded-2xl overflow-hidden reveal group flex flex-col">
                             <img src="https://images.unsplash.com/photo-1617802690992-06d328a31f4a?q=80&w=1964&auto=format&fit=crop"
                                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/111827/FFFFFF?text=Smart+Home';"
-                                 alt="Una tablet mostrando un dashboard de casa inteligente" class="w-full h-64 object-cover">
+                                 alt="[Imagen de una tableta mostrando un panel de casa inteligente]" class="w-full h-64 object-cover">
                             <div class="p-8 flex flex-col flex-grow">
                                 <h3 class="text-2xl font-bold text-white mb-2">Smart Home Automation</h3>
                                 <p class="text-gray-400 mb-4 flex-grow">A deep dive into my Home Assistant setup, featuring custom hardware and complex automations.</p>

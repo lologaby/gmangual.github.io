@@ -140,7 +140,7 @@ body {
   --btn-animation-duration: 1.2s;
   --btn-shadow-color: rgba(0, 0, 0, 0.137);
   --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
-  --hover-btn-color: #1ceb3f;
+  --hover-btn-color: #00ff99; /* Color de hover cambiado a verde */
   --default-btn-color: #fff;
   --font-size: 14px;
   --font-weight: 600;
@@ -348,4 +348,55 @@ body {
   100% {
     transform: translateY(0%);
   }
+}
+
+/* --- ESTILOS PARA BOTÓN DE LINKEDIN (MODIFICADO) --- */
+.LinkedinBtn {
+  width: 40px;   /* Tamaño ajustado para armonía visual */
+  height: 40px;  /* Tamaño ajustado para armonía visual */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  border-radius: 8px; /* Coincide con el radio de borde de ui-btn */
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.LinkedinBtn .svgContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(41, 41, 41, 0.5); /* Coincide con el fondo de ui-btn */
+  backdrop-filter: blur(4px);
+  border-radius: 8px; /* Coincide con el radio de borde de ui-btn */
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+  fill: #fff; /* Color del SVG */
+}
+
+.LinkedinBtn .BG {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: ##e8e8e82d; /* Color cambiado a verde del tema */
+  z-index: -1;
+  border-radius: 9px;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.LinkedinBtn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.LinkedinBtn:hover .svgContainer {
+  background-color: rgba(51, 51, 51, 1); /* Coincide con el hover de ui-btn */
+  border-color: rgba(255, 255, 255, 0.2);
 }
