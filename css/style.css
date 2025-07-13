@@ -98,6 +98,9 @@ body {
 @media (min-width: 768px) {
      #resume .timeline-text { font-size: 1.25rem; }
 }
+.timeline-text.typing {
+    text-align: left;
+}
 .timeline-text.typing::after {
     content: '_';
     animation: blink 1s step-end infinite;

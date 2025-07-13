@@ -153,50 +153,58 @@ window.addEventListener('resize', () => {
 // --- Scripts de la Página ---
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- Lógica de Sonido con Tone.js ---
-    let isSoundEnabled = false;
+    // --- Lógica de Sonido para Animación de Texto ---
+    let isSoundEnabled = true; // Sonido activado por defecto
     let audioStarted = false;
-    const synth = new Tone.Synth({
-        oscillator: { type: 'triangle' },
-        envelope: { attack: 0.01, decay: 0.2, sustain: 0.1, release: 0.5 }
-    }).toDestination();
     
+    // Crear un sintetizador para el efecto de "decode"
+    const textSynth = new Tone.MembraneSynth({
+        pitchDecay: 0.01,
+        octaves: 6,
+        oscillator: { type: 'sine' },
+        envelope: {
+            attack: 0.001,
+            decay: 0.2,
+            sustain: 0.01,
+            release: 0.2,
+            attackCurve: 'exponential'
+        }
+    }).toDestination();
+
     const soundBtn = document.getElementById('sound-toggle-btn');
     const iconSoundOn = document.getElementById('icon-sound-on');
     const iconSoundOff = document.getElementById('icon-sound-off');
 
-    if (soundBtn) {
-        soundBtn.addEventListener('click', async () => {
-            if (!audioStarted) {
-                await Tone.start();
-                audioStarted = true;
-                console.log('Audio context started');
-            }
-            isSoundEnabled = !isSoundEnabled;
+    // Función para iniciar el audio en la primera interacción del usuario
+    const startAudio = async () => {
+        if (!audioStarted) {
+            await Tone.start();
+            audioStarted = true;
+            console.log('Audio context started');
+        }
+    };
+    // Añadir listener para la primera interacción en cualquier parte
+    document.body.addEventListener('click', startAudio, { once: true });
+    document.body.addEventListener('scroll', startAudio, { once: true });
+
+
+    const updateSoundIcons = () => {
+        if (iconSoundOn && iconSoundOff) {
             iconSoundOn.classList.toggle('hidden', !isSoundEnabled);
             iconSoundOff.classList.toggle('hidden', isSoundEnabled);
+        }
+    };
+    
+    if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+            isSoundEnabled = !isSoundEnabled;
+            updateSoundIcons();
         });
     }
-
-    let lastScrollY = window.scrollY;
-    let scrollTimeout;
-    document.addEventListener('scroll', () => {
-        if (!isSoundEnabled) return;
-
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            const currentScrollY = window.scrollY;
-            const now = Tone.now();
-            if (currentScrollY > lastScrollY) {
-                synth.triggerAttackRelease('C2', '8n', now); // Tono más bajo al bajar
-            } else if (currentScrollY < lastScrollY) {
-                synth.triggerAttackRelease('G2', '8n', now); // Tono más alto al subir
-            }
-            lastScrollY = currentScrollY;
-        }, 150); // Throttle para no saturar de sonidos
-    });
-
-
+    
+    // Actualizar iconos al cargar la página
+    updateSoundIcons();
+    
     // --- Lógica del Menú Móvil ---
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -206,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Opcional: cerrar el menú al hacer clic en un enlace
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -223,6 +230,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function typeWriter(text, element, index, callback) {
         if (index < text.length) {
             element.innerHTML += text.charAt(index);
+            // Reproducir sonido de escritura
+            if (isSoundEnabled && audioStarted) {
+                textSynth.triggerAttackRelease("C2", "32n", Tone.now());
+            }
             setTimeout(() => typeWriter(text, element, index + 1, callback), 80);
         } else if (callback) {
             callback();
@@ -255,22 +266,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.1 });
     revealElements.forEach(el => observer.observe(el));
 
-    // --- Animación de la Línea de Tiempo ---
+    // --- Animación de la Línea de Tiempo (CON SONIDO) ---
     const typeText = (element) => {
         return new Promise(resolve => {
             const text = element.dataset.text;
             let i = 0;
             element.innerHTML = '';
             element.classList.add('typing');
-            const typing = setInterval(() => {
+            const typingInterval = setInterval(() => {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
                     i++;
+                    if (isSoundEnabled && audioStarted) {
+                        textSynth.triggerAttackRelease("C1", "32n", Tone.now());
+                    }
                 } else {
-                    clearInterval(typing);
+                    clearInterval(typingInterval);
+                    element.classList.remove('typing');
                     resolve();
                 }
-            }, 25);
+            }, 50); // Velocidad de escritura
         });
     };
 
@@ -280,49 +295,46 @@ document.addEventListener('DOMContentLoaded', function() {
             const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:",./<>?';
             let i = 0;
             element.classList.add('typing');
-            const decoding = setInterval(() => {
-                element.textContent = originalText.split('')
-                    .map((char, index) => {
-                        if (char === ' ') return ' ';
-                        if (index < i) {
-                            return originalText[index];
-                        }
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    })
+            const decodingInterval = setInterval(() => {
+                element.textContent = originalText
+                    .split('')
+                    .map((char, index) => (index < i ? originalText[index] : chars[Math.floor(Math.random() * chars.length)]))
                     .join('');
 
+                if (isSoundEnabled && audioStarted) {
+                    const note = ['C1', 'E1', 'G1'][Math.floor(Math.random() * 3)];
+                    textSynth.triggerAttackRelease(note, "32n", Tone.now());
+                }
+
                 if (i >= originalText.length) {
-                    clearInterval(decoding);
+                    clearInterval(decodingInterval);
+                    element.textContent = originalText; // Garantiza el texto final
                     element.classList.remove('typing');
                     resolve();
                 }
-                i += originalText.length / 100;
-            }, 20);
+                i += originalText.length / 50; // Ajusta la velocidad
+            }, 40);
         });
     };
 
     const timelineObserver = new IntersectionObserver(async (entries) => {
         for (const entry of entries) {
             if (entry.isIntersecting) {
+                timelineObserver.unobserve(entry.target); // Prevenir re-animación
                 entry.target.classList.add('visible');
                 const allTextElements = Array.from(entry.target.querySelectorAll('.timeline-text'));
-                for (let i = 0; i < allTextElements.length; i++) {
-                    const el = allTextElements[i];
-                    allTextElements.forEach(e => e.classList.remove('typing'));
-                    el.classList.add('typing');
+                
+                for (const el of allTextElements) {
                     if (el.dataset.effect === 'decode') {
                         await decodeText(el);
                     } else {
                         await typeText(el);
                     }
+                    await new Promise(res => setTimeout(res, 50)); // Pequeña pausa
                 }
-                if (allTextElements.length > 0) {
-                    allTextElements[allTextElements.length - 1].classList.add('typing');
-                }
-                timelineObserver.unobserve(entry.target);
             }
         }
-    }, { threshold: 0.5 });
+    }, { threshold: 0.6 });
 
     document.querySelectorAll('.timeline-item').forEach(item => {
         timelineObserver.observe(item);
