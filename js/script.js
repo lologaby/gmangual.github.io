@@ -438,4 +438,20 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === modal) closeModal();
         });
     }
+
+    // --- Logic to hide the Spline logo ---
+    const splineViewer = document.querySelector('spline-viewer');
+    if (splineViewer) {
+        // The logo is inside a shadow DOM. We wait for the scene to load.
+        splineViewer.addEventListener('load', () => {
+            const shadow = splineViewer.shadowRoot;
+            if (shadow) {
+                // We inject a style tag to hide the logo.
+                // This is more robust than targeting a specific ID which might change.
+                const style = document.createElement('style');
+                style.innerHTML = '#logo { display: none !important; }';
+                shadow.appendChild(style);
+            }
+        });
+    }
 });
