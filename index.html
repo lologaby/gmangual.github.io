@@ -1,249 +1,207 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex G. Berrios Mangual - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Portfolio of Alex G. Berrios Mangual, Systems Administrator and DevOps enthusiast focused on reliable infrastructure, monitoring, automation, and homelab engineering.">
+    <title>Alex G. Berrios Mangual | Systems Administrator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.27/build/spline-viewer.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="antialiased">
-    
-    <canvas id="bg-canvas"></canvas>
-    
-    <div class="content-wrapper">
-        <header class="glass-nav fixed top-0 left-0 right-0 z-50">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <div id="logo-container" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
-                    <img src="assets/logote.svg" alt="Logo" style="width: 100px; height: 41px;">
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-4">
-                    <nav class="flex items-center space-x-4">
-                        <a href="#about" class="ui-btn"><span>About</span></a>
-                        <a href="#skills" class="ui-btn"><span>Skills</span></a>
-                        <a href="#projects" class="ui-btn"><span>Projects</span></a>
-                        <a href="#contact" class="ui-btn"><span>Contact</span></a>
-                    </nav>
-                    <div class="flex items-center space-x-4 pl-4 border-l border-gray-700">
-                        <a href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer">
-                           <button class="LinkedinBtn">
-                              <span class="svgContainer">
-                                <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-                              </span>
-                              <span class="BG"></span>
-                            </button>
-                        </a>
-                        <a href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer">
-                            <button class="cssbuttons-io">
-                              <span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M0 0h24v24H0z" fill="none"></path>
-                                  <path d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z" fill="currentColor"></path>
-                                </svg>
-                                Code</span>
-                            </button>
-                        </a>
-                    </div>
-                </div>
+<body>
+    <canvas id="network-canvas" aria-hidden="true"></canvas>
 
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-toggle" class="text-white p-2 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-                    </button>
-                </div>
-            </div>
-            <div id="mobile-menu" class="hidden md:hidden bg-black/80 backdrop-blur-sm">
-                <nav class="flex flex-col items-center space-y-4 py-6">
-                    <a href="#about" class="ui-btn"><span>About</span></a>
-                    <a href="#skills" class="ui-btn"><span>Skills</span></a>
-                    <a href="#projects" class="ui-btn"><span>Projects</span></a>
-                    <a href="#contact" class="ui-btn"><span>Contact</span></a>
-                    <a href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer" class="ui-btn">
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer" class="ui-btn">
-                        <span>LinkedIn</span>
-                    </a>
-                </nav>
-            </div>
-        </header>
-
-        <main>
-            <section id="hero" class="h-screen flex flex-col justify-start items-center text-center relative px-4">
-                <div class="relative z-10 pt-32 md:pt-40 hero-text-container">
-                    <div id="terminal" class="text-5xl md:text-8xl">
-                        <span id="terminal-command"></span><span id="cursor"></span>
-                    </div>
-                    <p class="mt-4 text-lg md:text-2xl max-w-4xl mx-auto text-gray-300 font-medium">
-                        Systems Administrator | Dev OPS Enthusiast
-                    </p>
-                </div>
-                 <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white z-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-                </div>
-            </section>
-
-            <!-- Combined Server Rack & About Section -->
-            <section id="about" class="py-20 md:py-32 content-section">
-                <div class="container mx-auto px-6 text-center reveal">
-                    <h2 class="text-4xl font-bold mb-12 hacker-text" data-text="Server Rack">Server Rack</h2>
-                </div>
-
-                <!-- Full-width Spline container -->
-                <div class="w-full h-[60vh] mb-20 md:mb-32 reveal">
-                    <spline-viewer url="https://prod.spline.design/vZonpvzmloNzqxrv/scene.splinecode"></spline-viewer>
-                </div>
-
-                <div class="container mx-auto px-6 text-center reveal">
-                    <h2 class="text-4xl font-bold text-white mb-6">About Me</h2>
-                    <p class="text-gray-300 max-w-3xl mx-auto">
-                        Curious and driven NOC Technician with a passion for learning and problem-solving. As a Linux enthusiast, I build and manage a home lab to explore networking and server technologies. Always eager to expand my skills, I thrive in fast-paced environments and enjoy tackling new challenges.
-                    </p>
-                </div>
-            </section>
-            
-            <section id="resume" class="py-20 md:py-32 content-section px-6 font-mono">
-                 <div class="container mx-auto max-w-4xl">
-                    <h2 class="text-4xl font-bold text-white mb-16 text-center reveal">Career Path</h2>
-                    <div class="space-y-16">
-                        <div>
-                            <h3 class="text-2xl text-green-400 mb-8 reveal">./Education</h3>
-                            <div class="timeline-item space-y-8">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div class="text-gray-400 md:text-right">
-                                        <p class="timeline-text" data-text="2017 - 2022"></p>
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <h4 class="text-xl font-bold text-white timeline-text" data-text="Network Technology and Applications Development"></h4>
-                                        <p class="text-gray-500 timeline-text" data-text="NUC University, Bayamon P.R"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl text-green-400 mb-8 reveal">./Work_Experience</h3>
-                            <div class="timeline-item space-y-8">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div class="text-gray-400 md:text-right">
-                                        <p class="timeline-text" data-text="2021 - Present"></p>
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <h4 class="text-xl font-bold text-white timeline-text" data-text="NOC Technician Tier 1"></h4>
-                                        <p class="text-gray-500 mb-2 timeline-text" data-text="Worldnet"></p>
-                                        <p class="text-gray-400 timeline-text" data-text="Provided comprehensive support, monitoring, and troubleshooting for network and customer issues, ensuring adherence to SLA for repair time and follow-up processes." data-effect="decode"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-16 text-center reveal" style="position: relative; top: 2rem;">
-                        <a href="resume/resume.pdf" target="_blank" rel="noopener noreferrer">
-                            <button class="download-button">
-                              <div class="docs">
-                                <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="currentColor" height="20" width="20" viewBox="0 0 24 24">
-                                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                  <polyline points="14 2 14 8 20 8"></polyline>
-                                  <line y2="13" x2="8" y1="13" x1="16"></line>
-                                  <line y2="17" x2="8" y1="17" x1="16"></line>
-                                  <polyline points="10 9 9 9 8 9"></polyline>
-                                </svg> Resume
-                              </div>
-                              <div class="download">
-                                <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="currentColor" height="24" width="24" viewBox="0 0 24 24">
-                                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                  <polyline points="7 10 12 15 17 10"></polyline>
-                                  <line y2="15" x2="12" y1="3" x1="12"></line>
-                                </svg>
-                              </div>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="skills" class="py-20 md:py-32 content-section overflow-hidden">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-12 reveal">
-                        <h2 class="text-4xl font-bold text-white">Technical Skills</h2>
-                        <p class="text-gray-400 mt-2">Tap a skill for more details. Flick to scroll.</p>
-                    </div>
-                    <div id="skills-slider" class="skills-slider flex space-x-8 md:space-x-12 no-scrollbar overflow-x-auto py-4 -mx-6 px-6">
-                    </div>
-                </div>
-            </section>
-
-            <section id="projects" class="py-20 md:py-32 content-section px-6">
-                <div class="container mx-auto">
-                    <div class="text-center mb-16 reveal">
-                        <h2 class="text-4xl font-bold text-white">Featured Projects</h2>
-                        <p class="text-gray-400 mt-2">A look into my self-hosted infrastructure and development work.</p>
-                    </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <div class="lg:col-span-2 bg-gray-900 rounded-2xl overflow-hidden reveal group flex flex-col md:flex-row">
-                             <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                                <h3 class="text-3xl font-bold text-white mb-2">Home Lab Infrastructure</h3>
-                                <p class="text-gray-400 mb-4 flex-grow">An interactive infographic detailing my Proxmox server, virtual machines, and the containerized services I run for automation, media, and development.</p>
-                                <a href="projects/proxmox-stack.html" class="mt-auto self-start inline-block bg-white text-black font-bold py-2 px-6 rounded-full hover:bg-gray-200 transition-colors duration-300">
-                                    Explore the Stack
-                                </a>
-                            </div>
-                            <div class="md:w-1/2 h-64 md:h-full bg-cyan-900/20 flex items-center justify-center p-4">
-                               <svg class="w-full h-full text-cyan-400" viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
-                                    <path d="M 10 50 L 40 50" stroke="currentColor" stroke-width="1" fill="none" /><path d="M 160 50 L 190 50" stroke="currentColor" stroke-width="1" fill="none" /><path d="M 75 20 L 75 80" stroke="currentColor" stroke-width="1" fill="none" /><path d="M 125 20 L 125 80" stroke="currentColor" stroke-width="1" fill="none" /><path d="M 40 50 Q 50 50, 60 40 L 75 20" stroke="currentColor" stroke-width="1" fill="none" /><path d="M 40 50 Q 50 50, 60 60 L 75 80" stroke="currentColor" stroke-width="1" fill="none" /><path d="M 125 20 L 140 35 Q 150 50, 160 50" stroke="currentColor" stroke-width="1" fill="none" /><path d="M 125 80 L 140 65 Q 150 50, 160 50" stroke="currentColor" stroke-width="1" fill="none" /><rect x="70" y="15" width="10" height="10" rx="1" fill="currentColor" /><rect x="70" y="75" width="10" height="10" rx="1" fill="currentColor" /><rect x="120" y="15" width="10" height="10" rx="1" fill="currentColor" /><rect x="120" y="75" width="10" height="10" rx="1" fill="currentColor" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="bg-gray-900 rounded-2xl overflow-hidden reveal group flex flex-col">
-                            <img src="https://images.unsplash.com/photo-1617802690992-06d328a31f4a?q=80&w=1964&auto=format&fit=crop"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/111827/FFFFFF?text=Smart+Home';"
-                                 alt="[Imagen de una tableta mostrando un panel de casa inteligente]" class="w-full h-64 object-cover">
-                            <div class="p-8 flex flex-col flex-grow">
-                                <h3 class="text-2xl font-bold text-white mb-2">Smart Home Automation</h3>
-                                <p class="text-gray-400 mb-4 flex-grow">A deep dive into my Home Assistant setup, featuring custom hardware and complex automations.</p>
-                                <a href="projects/home-assistant.html" class="mt-auto self-start inline-block bg-white text-black font-bold py-2 px-6 rounded-full hover:bg-gray-200 transition-colors duration-300">
-                                    View Project
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="py-20 md:py-32 content-section text-center px-6">
-                <div class="container mx-auto reveal">
-                    <h2 class="text-4xl font-bold text-white">Get In Touch</h2>
-                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out.</p>
-                    <a href="mailto:AGBM97@ICLOUD.COM" class="mt-8 inline-block bg-white text-black font-bold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors duration-300">
-                        Say Hello
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <footer class="content-section py-6">
-            <div class="container mx-auto text-center text-gray-500">
-                <p>&copy; 2024 Alex Berrios. All rights reserved.</p>
-            </div>
-        </footer>
-
-        <div id="skill-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+    <header class="site-header" data-header>
+        <a class="brand" href="#hero" aria-label="Alex Berrios Mangual home">
+            <span class="brand-mark">A</span>
+            <span class="brand-text">AGBM</span>
+        </a>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+            <a href="#about">about</a>
+            <a href="#career">timeline</a>
+            <a href="#skills">skills</a>
+            <a href="#projects">projects</a>
+            <a href="#contact">contact</a>
+        </nav>
+        <div class="header-actions">
+            <a class="icon-link" href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.32 8.02h4.35V23H.32V8.02Zm7.25 0h4.17v2.05h.06c.58-1.1 2-2.27 4.12-2.27 4.4 0 5.21 2.9 5.21 6.67V23h-4.35v-7.55c0-1.8-.03-4.12-2.51-4.12-2.52 0-2.9 1.96-2.9 3.99V23h-4.3V8.02Z"/></svg>
+            </a>
+            <a class="code-link" href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.38c.6.1.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.78-1.34-1.78-1.1-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.3.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.1c1.02 0 2.05.14 3.02.4 2.28-1.55 3.28-1.23 3.28-1.23.66 1.66.24 2.88.12 3.18.78.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.23v3.3c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg>
+                <span>view code</span>
+            </a>
+            <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" data-menu-button>
+                <span></span><span></span><span></span>
+            </button>
         </div>
-    </div>
-    
-    <div id="sound-container">
-        <button id="sound-toggle-btn" class="sound-btn" aria-label="Toggle Sound">
-            <svg id="icon-sound-off" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" /></svg>
-            <svg id="icon-sound-on" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" /></svg>
-        </button>
-    </div>
+    </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav>
+        <a href="#about">about</a>
+        <a href="#career">timeline</a>
+        <a href="#skills">skills</a>
+        <a href="#projects">projects</a>
+        <a href="#contact">contact</a>
+        <a href="resume/resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
+    </nav>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-media" aria-hidden="true">
+                <img src="assets/homelab-hero.png" alt="">
+            </div>
+            <div class="hero-content">
+                <p class="terminal-line">alex@agbm.dev:~$ <span data-typewriter="whoami"></span><span class="cursor"></span></p>
+                <h1>Alex Berrios Mangual</h1>
+                <p class="hero-subtitle">Systems Administrator | DevOps Enthusiast</p>
+                <p class="hero-copy">I design, monitor, and automate reliable infrastructure across production networks and hands-on homelab environments.</p>
+                <div class="hero-actions">
+                    <a class="primary-action" href="#projects">Explore my work</a>
+                    <a class="secondary-action" href="resume/resume.pdf" target="_blank" rel="noopener noreferrer">Download resume</a>
+                </div>
+                <ul class="signal-list" aria-label="Focus areas">
+                    <li>Linux</li>
+                    <li>Virtualization</li>
+                    <li>Networking</li>
+                    <li>Automation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="dashboard-grid section-pad" id="about">
+            <article class="panel about-panel reveal">
+                <div class="section-label"># about_me</div>
+                <div class="panel-body with-icon">
+                    <div class="terminal-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="m7 8 4 4-4 4M13 16h4"/></svg>
+                    </div>
+                    <div>
+                        <p>Curious and driven NOC Technician with a passion for learning, troubleshooting, and documenting reliable systems.</p>
+                        <p>I build and manage a home lab to explore Linux, networking, virtualization, monitoring, and self-hosted services.</p>
+                    </div>
+                </div>
+                <div class="mindset">
+                    <span>alex@agbm.dev:~$ cat mindset.txt</span>
+                    <p>Automate the repeatable.<br>Document the critical.<br>Improve everything.</p>
+                </div>
+            </article>
+
+            <article class="panel career-panel reveal" id="career">
+                <div class="section-label"># career_path</div>
+                <div class="timeline">
+                    <div class="timeline-row">
+                        <time>2021 - Present</time>
+                        <div>
+                            <h2>NOC Technician Tier 1</h2>
+                            <p>Worldnet</p>
+                            <span>Network monitoring, incident response, SLA follow-up, customer support, and troubleshooting.</span>
+                        </div>
+                    </div>
+                    <div class="timeline-row">
+                        <time>2017 - 2022</time>
+                        <div>
+                            <h2>Network Technology and Applications Development</h2>
+                            <p>NUC University, Bayamon P.R.</p>
+                            <span>Technical foundation across networks, software, support, and infrastructure operations.</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="section-pad skills-section" id="skills">
+            <div class="section-heading reveal">
+                <h2>Technical Skills</h2>
+                <p>Grouped by the systems I use to build, operate, and troubleshoot infrastructure.</p>
+            </div>
+            <div class="skill-matrix reveal">
+                <div class="skill-row">
+                    <h3>Operating Systems</h3>
+                    <div><span>Linux</span><span>Ubuntu</span><span>RHEL</span><span>Windows Server</span><span>Bash</span></div>
+                </div>
+                <div class="skill-row">
+                    <h3>Virtualization & Containers</h3>
+                    <div><span>Proxmox VE</span><span>VMware</span><span>Docker</span><span>LXC</span><span>TrueNAS</span></div>
+                </div>
+                <div class="skill-row">
+                    <h3>Networking</h3>
+                    <div><span>TCP/IP</span><span>DNS</span><span>DHCP</span><span>VPN</span><span>VLAN</span><span>Firewall</span></div>
+                </div>
+                <div class="skill-row">
+                    <h3>Monitoring & Automation</h3>
+                    <div><span>Zabbix</span><span>Home Assistant</span><span>Ansible</span><span>Python</span><span>PowerShell</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-pad projects-section" id="projects">
+            <div class="section-heading reveal">
+                <h2>Featured Projects</h2>
+                <p>Self-hosted infrastructure and automation work with practical operating value.</p>
+            </div>
+            <div class="project-grid">
+                <article class="project-card project-wide reveal">
+                    <div class="project-diagram" aria-hidden="true">
+                        <div class="node main">Proxmox</div>
+                        <div class="node">TrueNAS</div>
+                        <div class="node">Zabbix</div>
+                        <div class="node">Docker</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Home Lab Infrastructure</h3>
+                        <p>An interactive breakdown of my Proxmox stack, virtual machines, containers, monitoring, backups, and self-hosted services.</p>
+                        <div class="project-tags"><span>Proxmox VE</span><span>TrueNAS</span><span>Zabbix</span><span>Ansible</span></div>
+                        <a href="projects/proxmox-stack.html">View project</a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="home-map" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Smart Home Automation</h3>
+                        <p>Home Assistant workflows, custom hardware, automations, and practical IoT integrations built around reliability.</p>
+                        <div class="project-tags"><span>Home Assistant</span><span>MQTT</span><span>IoT</span></div>
+                        <a href="projects/home-assistant.html">View project</a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-content compact">
+                        <h3>Plex Media Stack</h3>
+                        <p>Self-hosted media services, network storage, service orchestration, and remote access patterns.</p>
+                        <a href="projects/plex-project.html">View project</a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-content compact">
+                        <h3>Cinema Lighting Guide</h3>
+                        <p>Documented smart lighting behavior for media rooms and automation-driven scenes.</p>
+                        <a href="projects/cinema-lighting-guide.html">View guide</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-band section-pad reveal" id="contact">
+            <div>
+                <div class="section-label"># get_in_touch</div>
+                <h2>Open to infrastructure, support, and automation opportunities.</h2>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:AGBM97@ICLOUD.COM">AGBM97@ICLOUD.COM</a>
+                <a href="https://www.linkedin.com/in/alex-berrios-mangual-b26b5a241" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/lologaby/gmangual.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Alex Berrios Mangual. Built with Linux, monitoring, and careful iteration.</p>
+    </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
