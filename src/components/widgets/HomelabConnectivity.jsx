@@ -8,10 +8,10 @@ import { useState, useEffect, useCallback, useRef } from "react";
  */
 
 const NODES = [
-  { name: "pve-01", label: "Proxmox VE", host: "homelab.local", color: "#00e5cc" },
-  { name: "nas-01", label: "TrueNAS Scale", host: "storage.local", color: "#39ff14" },
-  { name: "docker-01", label: "Docker Host", host: "containers.local", color: "#f7f709" },
-  { name: "router-01", label: "MikroTik hEX", host: "gateway.local", color: "#ff2a6d" },
+  { name: "pve-01", label: "Proxmox VE", host: "homelab.local", color: "#ff00a0" },
+  { name: "nas-01", label: "TrueNAS Scale", host: "storage.local", color: "#00f0ff" },
+  { name: "docker-01", label: "Docker Host", host: "containers.local", color: "#ffcc00" },
+  { name: "router-01", label: "MikroTik hEX", host: "gateway.local", color: "#ff0055" },
 ];
 
 function simulatePing() {

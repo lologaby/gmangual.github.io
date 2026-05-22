@@ -39,7 +39,7 @@ function AppContent() {
   useEffect(() => {
     console.log(
       "%cnice, you found this. hire me.",
-      "color:#00e5cc;background:#050f0f;font:700 16px JetBrains Mono, monospace;padding:8px 10px;border:1px solid #1a4a4a;",
+      "color:#ff00a0;background:#0f050f;font:700 16px JetBrains Mono, monospace;padding:8px 10px;border:1px solid #3a1a5c;",
     );
     console.log("Try the Konami code, or visit /sudo.");
   }, []);

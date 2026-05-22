@@ -81,7 +81,7 @@ export default function Hero() {
             margin: 0,
             padding: "14px 16px",
             background: "#030303",
-            color: "#d8d4ca",
+            color: "#d4c8d8",
             fontFamily: '"Space Mono", monospace',
             fontSize: "0.9rem",
             lineHeight: 1.55,

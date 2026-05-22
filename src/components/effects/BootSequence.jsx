@@ -72,7 +72,7 @@ export default function BootSequence({ onComplete }) {
         fontFamily: '"JetBrains Mono", monospace',
         fontSize: "clamp(0.72rem, 1.4vw, 0.9rem)",
         lineHeight: 1.7,
-        color: "#39ff14",
+        color: "#00f0ff",
         opacity: done ? 0 : 1,
         transition: "opacity 600ms ease",
         pointerEvents: done ? "none" : "all",
@@ -86,7 +86,7 @@ export default function BootSequence({ onComplete }) {
           padding: "24px",
           border: "1px solid #1a3a1a",
           background: "rgba(2, 8, 2, 0.96)",
-          boxShadow: "inset 0 0 40px rgba(57, 255, 20, 0.04)",
+          boxShadow: "inset 0 0 40px rgba(192, 132, 252, 0.04)",
         }}
       >
         {BOOT_LINES.slice(0, visibleCount).map((line, i) => (
@@ -98,7 +98,7 @@ export default function BootSequence({ onComplete }) {
                   display: "inline-block",
                   width: "8px",
                   height: "1.1em",
-                  background: "#39ff14",
+                  background: "#00f0ff",
                   marginLeft: "4px",
                   verticalAlign: "text-bottom",
                   animation: "caretBlink 1s steps(2) infinite",

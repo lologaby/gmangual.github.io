@@ -46,8 +46,8 @@ export default function VoidBackground() {
       ctx.save();
       ctx.globalAlpha = 0.22;
       const horizonY = H * 0.38;
-      const gridColor = "#00e5cc";
-      const magentaColor = "#ff2a6d";
+      const gridColor = "#ff00a0";
+      const magentaColor = "#ff0055";
 
       // Horizontal floor lines
       for (let i = 0; i < 18; i++) {
@@ -84,7 +84,7 @@ export default function VoidBackground() {
 
         ctx.save();
         ctx.globalAlpha = Math.max(0, alpha);
-        ctx.fillStyle = star.size > 1.2 ? "#ff2a6d" : "#00e5cc";
+        ctx.fillStyle = star.size > 1.2 ? "#ff0055" : "#ff00a0";
         ctx.beginPath();
         ctx.arc(sx, sy, star.size, 0, Math.PI * 2);
         ctx.fill();
@@ -109,9 +109,9 @@ export default function VoidBackground() {
         const fy = Math.random() * H;
         ctx.save();
         ctx.globalAlpha = 0.06;
-        ctx.fillStyle = "#ff2a6d";
+        ctx.fillStyle = "#ff0055";
         ctx.fillRect(0, fy, W, 2);
-        ctx.fillStyle = "#00e5cc";
+        ctx.fillStyle = "#ff00a0";
         ctx.fillRect(0, fy + 2, W, 1);
         ctx.restore();
       }

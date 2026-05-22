@@ -5,22 +5,22 @@
 @tailwind utilities;
 
 :root {
-  --bg-base: #081414;
-  --bg-surface: #0f2020;
-  --bg-card: #132828;
-  --accent-primary: #00e5cc;
-  --accent-secondary: #39ff14;
-  --accent-muted: #1a4a4a;
-  --text-primary: #f0fafa;
-  --text-secondary: #8abdbd;
-  --text-dim: #4a8080;
-  --border: #224444;
-  --win-chrome: #b7beb9;
-  --win-shadow: #2d3434;
-  --win-highlight: #edf4ee;
-  --win-blue: #061a78;
-  --accent-magenta: #ff2a6d;
-  --accent-yellow: #f7f709;
+  --bg-base: #0a0418;
+  --bg-surface: #120824;
+  --bg-card: #1a0d2e;
+  --accent-primary: #ff00a0;
+  --accent-secondary: #00f0ff;
+  --accent-muted: #3a1a5c;
+  --text-primary: #f0e8ff;
+  --text-secondary: #c0a8d8;
+  --text-dim: #6a5080;
+  --border: #3a1a5e;
+  --win-chrome: #c5b8c8;
+  --win-shadow: #3a2d3a;
+  --win-highlight: #f4e8f4;
+  --win-blue: #2a0066;
+  --accent-magenta: #ff0055;
+  --accent-yellow: #ffcc00;
   color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -45,7 +45,7 @@ body {
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
-  background: #0c1c1c;
+  background: #0c0c1c;
   color: var(--text-primary);
   font-family: "DM Sans", Geist, system-ui, sans-serif;
 }
@@ -89,9 +89,9 @@ input {
   gap: 6px;
   padding: 2px 5px;
   border-top: 1px solid rgba(237, 244, 238, 0.72);
-  background: linear-gradient(180deg, #c5cbc6, #9ba39f);
+  background: linear-gradient(180deg, #c5b8c8, #9b8f9b);
   box-shadow: inset 0 1px #ffffff, 0 -10px 38px rgba(0, 0, 0, 0.28);
-  color: #071313;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
 }
@@ -102,14 +102,14 @@ input {
   display: inline-flex;
   height: 24px;
   align-items: center;
-  border: 1px solid #34403c;
-  background: #c8ceca;
-  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #606964;
+  border: 1px solid #3c3440;
+  background: #c8c0ca;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #645964;
 }
 
 .taskbar-start {
   padding: 0 10px 0 8px;
-  color: #071313;
+  color: #0f0713;
   font-weight: 700;
 }
 
@@ -118,8 +118,8 @@ input {
   height: 10px;
   margin-right: 7px;
   border-radius: 50%;
-  background: #00e5cc;
-  box-shadow: 0 0 8px rgba(0, 229, 204, 0.7);
+  background: #ff00a0;
+  box-shadow: 0 0 8px rgba(255, 107, 157, 0.7);
   content: "";
 }
 
@@ -168,19 +168,19 @@ input {
   align-items: center;
   gap: 24px;
   padding: 10px;
-  border: 1px solid #071313;
+  border: 1px solid #0f0713;
   border-radius: 0;
   background: linear-gradient(180deg, rgba(183, 190, 185, 0.94), rgba(137, 150, 146, 0.93));
   box-shadow:
     inset 1px 1px var(--win-highlight),
-    inset -1px -1px #394341,
+    inset -1px -1px #413941,
     0 20px 70px rgba(0, 0, 0, 0.34);
   backdrop-filter: blur(12px);
 }
 
 .nav-shell[data-scrolled="true"] {
   background: linear-gradient(180deg, rgba(174, 184, 179, 0.98), rgba(112, 128, 123, 0.98));
-  border-color: #071313;
+  border-color: #0f0713;
 }
 
 .brand-lockup {
@@ -195,13 +195,13 @@ input {
   width: 38px;
   height: 38px;
   place-items: center;
-  border: 1px solid #071313;
+  border: 1px solid #0f0713;
   border-radius: 0;
-  background: #071313;
+  background: #0f0713;
   color: var(--accent-primary);
   font-family: "Space Mono", monospace;
   font-weight: 700;
-  box-shadow: 0 0 20px rgba(0, 229, 204, 0.24);
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.24);
 }
 
 .brand-lockup strong,
@@ -211,13 +211,13 @@ input {
 }
 
 .brand-lockup strong {
-  color: #071313;
+  color: #0f0713;
   font-family: "Space Mono", monospace;
   font-size: 0.9rem;
 }
 
 .brand-lockup small {
-  color: #203231;
+  color: #312031;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.64rem;
 }
@@ -226,7 +226,7 @@ input {
   display: flex;
   justify-content: center;
   gap: clamp(14px, 2.7vw, 34px);
-  color: #203231;
+  color: #312031;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.76rem;
 }
@@ -241,7 +241,7 @@ input {
 .desktop-nav a::after {
   position: absolute;
   top: 50%;
-  color: #053f3b;
+  color: #3b053f;
   opacity: 0;
   transition: transform 180ms ease, opacity 180ms ease;
 }
@@ -259,7 +259,7 @@ input {
 }
 
 .desktop-nav a:hover {
-  color: #020808;
+  color: #080208;
 }
 
 .desktop-nav a:hover::before,
@@ -301,8 +301,8 @@ input {
 
 .button-primary:hover {
   background: var(--accent-primary);
-  color: #031111;
-  box-shadow: 0 0 20px rgba(0, 229, 204, 0.4);
+  color: #110311;
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
 }
 
 .button-secondary {
@@ -312,18 +312,18 @@ input {
 }
 
 .button-secondary:hover {
-  border-color: rgba(0, 229, 204, 0.6);
+  border-color: rgba(255, 107, 157, 0.6);
   color: var(--text-primary);
 }
 
 .nav-shell .button-secondary {
   border-color: rgba(5, 17, 17, 0.52);
   background: rgba(5, 15, 15, 0.12);
-  color: #102222;
+  color: #221022;
 }
 
 .nav-shell .button-secondary:hover {
-  color: #020808;
+  color: #080208;
 }
 
 .menu-toggle {
@@ -352,14 +352,14 @@ input {
   min-width: 220px;
   border: 1px solid var(--border);
   border-radius: 0;
-  background: #c7d0cb;
-  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #303838;
+  background: #d0c7d0;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #383038;
 }
 
 .mobile-nav a {
   display: block;
   padding: 13px 15px;
-  color: #071313;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.82rem;
 }
@@ -373,7 +373,7 @@ input {
   align-items: start;
   background:
     linear-gradient(180deg, rgba(5, 15, 15, 0.05), rgba(5, 15, 15, 0.25) 72%, rgba(5, 15, 15, 0.55)),
-    radial-gradient(circle at 32% 46%, rgba(0, 229, 204, 0.06), transparent 28rem);
+    radial-gradient(circle at 32% 46%, rgba(255, 107, 157, 0.06), transparent 28rem);
 }
 
 .hero-section::after {
@@ -381,7 +381,7 @@ input {
   inset: 0;
   z-index: -4;
   content: "";
-  background: radial-gradient(circle at 34% 45%, rgba(0, 229, 204, 0.06), transparent 28rem);
+  background: radial-gradient(circle at 34% 45%, rgba(255, 107, 157, 0.06), transparent 28rem);
 }
 
 .hero-grid {
@@ -389,8 +389,8 @@ input {
   inset: 0;
   z-index: -5;
   background-image:
-    linear-gradient(rgba(0, 229, 204, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 204, 0.026) 1px, transparent 1px);
+    linear-gradient(rgba(255, 107, 157, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 107, 157, 0.026) 1px, transparent 1px);
   background-size: 52px 52px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 86%);
 }
@@ -408,7 +408,7 @@ input {
   width: 58vw;
   height: 2px;
   transform-origin: left center;
-  background: linear-gradient(90deg, transparent, rgba(0, 229, 204, 0.42), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.42), transparent);
   animation: beamSweep 9s linear infinite;
 }
 
@@ -454,9 +454,9 @@ input {
   border-radius: 50%;
   background: var(--accent-primary);
   box-shadow:
-    0 0 14px rgba(0, 229, 204, 0.72),
-    42px 28px 0 rgba(0, 229, 204, 0.18),
-    86px -34px 0 rgba(57, 255, 20, 0.16);
+    0 0 14px rgba(255, 107, 157, 0.72),
+    42px 28px 0 rgba(255, 107, 157, 0.18),
+    86px -34px 0 rgba(192, 132, 252, 0.16);
   opacity: 0.72;
   animation: fallbackDrift 9s ease-in-out infinite alternate;
   animation-delay: calc(var(--i) * -180ms);
@@ -491,7 +491,7 @@ input {
 
 .desktop-icons a:hover {
   color: #ffffff;
-  background: rgba(0, 229, 204, 0.08);
+  background: rgba(255, 107, 157, 0.08);
 }
 
 .desktop-icons i {
@@ -499,16 +499,16 @@ input {
   width: 34px;
   height: 30px;
   place-items: center;
-  border: 1px solid #071313;
+  border: 1px solid #0f0713;
   background: linear-gradient(180deg, #d7ded8, #8f9b96);
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #333d3a, 0 0 18px rgba(0, 229, 204, 0.14);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #333d3a, 0 0 18px rgba(255, 107, 157, 0.14);
   color: #021212;
   font-style: normal;
 }
 
 .desktop-icons a:hover i {
   background: linear-gradient(180deg, #ffffff, #aab5b0);
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #333d3a, 0 0 20px rgba(0, 229, 204, 0.34);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #333d3a, 0 0 20px rgba(255, 107, 157, 0.34);
 }
 
 .hero-content {
@@ -546,8 +546,8 @@ input {
   border: 1px solid rgba(7, 19, 19, 0.95);
   background: linear-gradient(180deg, rgba(183, 190, 185, 0.96), rgba(129, 145, 140, 0.92));
   box-shadow:
-    inset 1px 1px #f5fbf6,
-    inset -1px -1px #26302e,
+    inset 1px 1px #fbf5fb,
+    inset -1px -1px #302630,
     0 36px 90px rgba(0, 0, 0, 0.42);
 }
 
@@ -557,8 +557,8 @@ input {
   border: 1px solid rgba(7, 19, 19, 0.95);
   background: linear-gradient(180deg, rgba(183, 190, 185, 0.96), rgba(129, 145, 140, 0.92));
   box-shadow:
-    inset 1px 1px #f5fbf6,
-    inset -1px -1px #26302e,
+    inset 1px 1px #fbf5fb,
+    inset -1px -1px #302630,
     0 26px 70px rgba(0, 0, 0, 0.38);
 }
 
@@ -568,9 +568,9 @@ input {
   align-items: center;
   justify-content: space-between;
   padding: 4px 6px 4px 9px;
-  border-bottom: 1px solid #071313;
-  background: linear-gradient(90deg, var(--win-blue), #03443e 52%, #00a897);
-  color: #eafffb;
+  border-bottom: 1px solid #0f0713;
+  background: linear-gradient(90deg, var(--win-blue), #b026ff 52%, #ff00a0);
+  color: #fbeaff;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   user-select: none;
@@ -589,22 +589,22 @@ input {
   width: 18px;
   height: 18px;
   place-items: center;
-  border: 1px solid #071313;
-  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
-  color: #071313;
+  border: 1px solid #0f0713;
+  background: linear-gradient(180deg, #f7f2f7, #a49da9);
+  color: #0f0713;
   font-size: 0.66rem;
   line-height: 1;
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #473e47;
 }
 
 /* Window Frame System */
 .window-frame {
   overflow: hidden;
-  border: 1px solid #071313;
+  border: 1px solid #0f0713;
   background: linear-gradient(180deg, rgba(183, 190, 185, 0.98), rgba(129, 145, 140, 0.94));
   box-shadow:
     inset 1px 1px #ffffff,
-    inset -1px -1px #26302e,
+    inset -1px -1px #302630,
     0 0 0 1px rgba(0, 0, 0, 0.5),
     0 20px 60px rgba(0, 0, 0, 0.6),
     0 8px 24px rgba(0, 0, 0, 0.4);
@@ -622,12 +622,12 @@ input {
   height: 18px;
   place-items: center;
   padding: 0;
-  border: 1px solid #071313;
-  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
-  color: #071313;
+  border: 1px solid #0f0713;
+  background: linear-gradient(180deg, #f7f2f7, #a49da9);
+  color: #0f0713;
   font-size: 0.66rem;
   line-height: 1;
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #473e47;
   cursor: pointer;
 }
 
@@ -636,7 +636,7 @@ input {
 }
 
 .window-titlebar-controls button:active {
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #3e4744;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #473e47;
 }
 
 .window-body {
@@ -652,11 +652,11 @@ input {
   z-index: 60;
   width: 220px;
   padding: 4px;
-  border: 1px solid #071313;
-  background: linear-gradient(180deg, #c5cbc6, #9ba39f);
+  border: 1px solid #0f0713;
+  background: linear-gradient(180deg, #c5b8c8, #9b8f9b);
   box-shadow:
     inset 1px 1px #ffffff,
-    inset -1px -1px #303838,
+    inset -1px -1px #383038,
     0 -10px 38px rgba(0, 0, 0, 0.28);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.76rem;
@@ -667,8 +667,8 @@ input {
   align-items: center;
   gap: 10px;
   padding: 8px;
-  background: linear-gradient(180deg, #061a78, #03443e 52%, #00a897);
-  color: #eafffb;
+  background: linear-gradient(180deg, #2a0066, #6a00b0 52%, #ff00a0);
+  color: #fbeaff;
   font-weight: 700;
 }
 
@@ -677,36 +677,36 @@ input {
   width: 32px;
   height: 32px;
   place-items: center;
-  border: 1px solid #071313;
-  background: #071313;
+  border: 1px solid #0f0713;
+  background: #0f0713;
   color: var(--accent-primary);
   font-family: "Space Mono", monospace;
   font-size: 1rem;
   font-weight: 700;
-  box-shadow: 0 0 12px rgba(0, 229, 204, 0.3);
+  box-shadow: 0 0 12px rgba(255, 107, 157, 0.3);
 }
 
 .start-menu-divider {
   height: 1px;
   margin: 4px 0;
-  background: linear-gradient(90deg, transparent, #394341, transparent);
+  background: linear-gradient(90deg, transparent, #413941, transparent);
 }
 
 .start-menu-nav a {
   display: block;
   padding: 8px 10px;
-  color: #071313;
+  color: #0f0713;
   transition: background 120ms ease;
 }
 
 .start-menu-nav a:hover {
-  background: linear-gradient(90deg, #061a78, #03443e 52%, #00a897);
-  color: #eafffb;
+  background: linear-gradient(90deg, #2a0066, #b026ff 52%, #ff00a0);
+  color: #fbeaff;
 }
 
 .start-menu-footer {
   padding: 6px 10px;
-  color: #394341;
+  color: #413941;
   font-size: 0.64rem;
   text-align: right;
 }
@@ -722,18 +722,18 @@ input {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border: 1px solid #34403c;
-  background: #c8ceca;
-  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #606964;
-  color: #071313;
+  border: 1px solid #3c3440;
+  background: #c8c0ca;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #645964;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   cursor: pointer;
 }
 
 .taskbar-programs button.active {
-  background: #d1d8d3;
-  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #606964;
+  background: #d8d1d8;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #645964;
 }
 
 .taskbar-start {
@@ -746,9 +746,9 @@ input {
 .hero-window-body {
   padding: clamp(20px, 4vw, 40px);
   background:
-    linear-gradient(rgba(0, 229, 204, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 204, 0.035) 1px, transparent 1px),
-    radial-gradient(circle at 72% 25%, rgba(0, 229, 204, 0.1), transparent 22rem),
+    linear-gradient(rgba(255, 107, 157, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 107, 157, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 72% 25%, rgba(255, 107, 157, 0.1), transparent 22rem),
     rgba(5, 15, 15, 0.94);
   background-size: 24px 24px, 24px 24px, auto, auto;
 }
@@ -772,7 +772,7 @@ input {
   margin: 0;
   padding: 14px 16px;
   background: #030303;
-  color: #d8d4ca;
+  color: #d4c8d8;
   font-family: "Space Mono", monospace;
   font-size: 0.9rem;
   line-height: 1.55;
@@ -839,18 +839,18 @@ input {
   inset: -1px;
   z-index: -1;
   content: "";
-  background: conic-gradient(from 180deg, transparent, rgba(0, 229, 204, 0.24), transparent 35%);
+  background: conic-gradient(from 180deg, transparent, rgba(255, 107, 157, 0.24), transparent 35%);
   filter: blur(22px);
 }
 
 .terminal-panel {
   overflow: hidden;
-  border: 1px solid #071313;
+  border: 1px solid #0f0713;
   border-radius: 0;
   background: linear-gradient(180deg, rgba(183, 190, 185, 0.96), rgba(132, 145, 141, 0.94));
   box-shadow:
-    inset 1px 1px #f5fbf6,
-    inset -1px -1px #26302e,
+    inset 1px 1px #fbf5fb,
+    inset -1px -1px #302630,
     0 28px 90px rgba(0, 0, 0, 0.42);
 }
 
@@ -860,17 +860,17 @@ input {
   gap: 7px;
   min-height: 38px;
   padding: 0 12px;
-  border-bottom: 1px solid #071313;
-  background: linear-gradient(90deg, #03443e, #00a897 58%, #98cfc7);
+  border-bottom: 1px solid #0f0713;
+  background: linear-gradient(90deg, #6a00b0, #ff00a0 58%, #ff99cc);
 }
 
 .terminal-chrome span {
   width: 16px;
   height: 16px;
-  border: 1px solid #071313;
+  border: 1px solid #0f0713;
   border-radius: 0;
-  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
+  background: linear-gradient(180deg, #f7f2f7, #a49da9);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #473e47;
 }
 
 .terminal-chrome span:first-child {
@@ -879,7 +879,7 @@ input {
 
 .terminal-chrome strong {
   margin-left: auto;
-  color: #eafffb;
+  color: #fbeaff;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   font-weight: 700;
@@ -889,8 +889,8 @@ input {
   min-height: 330px;
   padding: 18px;
   border: 10px solid rgba(5, 15, 15, 0.96);
-  background-image: linear-gradient(rgba(57, 255, 20, 0.035) 50%, transparent 50%);
-  background-color: #020808;
+  background-image: linear-gradient(rgba(192, 132, 252, 0.035) 50%, transparent 50%);
+  background-color: #080208;
   background-size: 100% 6px;
   color: var(--text-secondary);
   font-family: "JetBrains Mono", monospace;
@@ -979,14 +979,14 @@ input {
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(180deg, rgba(0, 229, 204, 0.015), transparent 44%),
-    radial-gradient(circle at 15% 20%, rgba(0, 229, 204, 0.035), transparent 24rem);
+    linear-gradient(180deg, rgba(255, 107, 157, 0.015), transparent 44%),
+    radial-gradient(circle at 15% 20%, rgba(255, 107, 157, 0.035), transparent 24rem);
 }
 
 .section-header {
   width: min(780px, 100%);
   margin-bottom: clamp(26px, 5vw, 52px);
-  border-left: 1px solid rgba(0, 229, 204, 0.4);
+  border-left: 1px solid rgba(255, 107, 157, 0.4);
   padding-left: 16px;
 }
 
@@ -1073,7 +1073,7 @@ input {
   gap: 1px;
   margin: 0;
   padding: 12px;
-  background: #050f0f;
+  background: #0f050f;
 }
 
 .about-file-window dl > div {
@@ -1081,7 +1081,7 @@ input {
   grid-template-columns: 102px minmax(0, 1fr);
   gap: 12px;
   padding: 10px;
-  border: 1px solid rgba(0, 229, 204, 0.16);
+  border: 1px solid rgba(255, 107, 157, 0.16);
   background: rgba(10, 26, 26, 0.72);
 }
 
@@ -1117,7 +1117,7 @@ input {
   align-items: center;
   min-height: 64px;
   padding: 14px 16px;
-  border: 1px solid rgba(0, 229, 204, 0.18);
+  border: 1px solid rgba(255, 107, 157, 0.18);
   border-radius: 4px;
   background: rgba(10, 26, 26, 0.58);
   color: var(--text-secondary);
@@ -1145,7 +1145,7 @@ input {
   border: 1px solid var(--border);
   border-radius: 4px;
   background:
-    radial-gradient(circle at 50% 50%, rgba(0, 229, 204, 0.08), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.08), transparent 34%),
     linear-gradient(180deg, rgba(13, 32, 32, 0.66), rgba(5, 15, 15, 0.74));
 }
 
@@ -1155,7 +1155,7 @@ input {
   width: 82%;
   height: 82%;
   fill: none;
-  stroke: rgba(0, 229, 204, 0.2);
+  stroke: rgba(255, 107, 157, 0.2);
   stroke-width: 0.34;
 }
 
@@ -1170,14 +1170,14 @@ input {
   align-items: center;
   max-width: 150px;
   padding: 8px 10px;
-  border: 1px solid rgba(0, 229, 204, 0.38);
+  border: 1px solid rgba(255, 107, 157, 0.38);
   border-radius: 4px;
   background: rgba(5, 15, 15, 0.82);
   color: var(--text-primary);
   font-family: "JetBrains Mono", monospace;
   font-size: calc(0.68rem + (var(--weight) * 0.16rem));
   line-height: 1.2;
-  box-shadow: 0 0 24px rgba(0, 229, 204, calc(var(--weight) * 0.08));
+  box-shadow: 0 0 24px rgba(255, 107, 157, calc(var(--weight) * 0.08));
   animation: skillFloat 6s ease-in-out infinite alternate;
 }
 
@@ -1249,8 +1249,8 @@ input {
 
 .project-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 229, 204, 0.62);
-  box-shadow: 0 0 26px rgba(0, 229, 204, 0.18);
+  border-color: rgba(255, 107, 157, 0.62);
+  box-shadow: 0 0 26px rgba(255, 107, 157, 0.18);
 }
 
 .project-card > i {
@@ -1275,10 +1275,10 @@ input {
   inset: 0 0 auto;
   z-index: 2;
   height: 24px;
-  border-bottom: 1px solid #071313;
+  border-bottom: 1px solid #0f0713;
   background: linear-gradient(90deg, rgba(3, 68, 62, 0.96), rgba(0, 168, 151, 0.88));
   content: "project_file.exe";
-  color: #eafffb;
+  color: #fbeaff;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.66rem;
   font-weight: 700;
@@ -1292,8 +1292,8 @@ input {
   content: "";
   pointer-events: none;
   background:
-    linear-gradient(rgba(57, 255, 20, 0.08) 50%, transparent 50%),
-    radial-gradient(circle at 70% 34%, rgba(0, 229, 204, 0.16), transparent 14rem);
+    linear-gradient(rgba(192, 132, 252, 0.08) 50%, transparent 50%),
+    radial-gradient(circle at 70% 34%, rgba(255, 107, 157, 0.16), transparent 14rem);
   background-size: 100% 5px, auto;
   mix-blend-mode: screen;
   opacity: 0.35;
@@ -1328,7 +1328,7 @@ input {
   fill: none;
   stroke: var(--accent-primary);
   stroke-width: 2;
-  filter: drop-shadow(0 0 10px rgba(0, 229, 204, 0.5));
+  filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.5));
 }
 
 .project-body {
@@ -1394,7 +1394,7 @@ input {
 
 .cert-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 229, 204, 0.55);
+  border-color: rgba(255, 107, 157, 0.55);
 }
 
 .cert-card img {
@@ -1496,15 +1496,15 @@ input {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border: 10px solid rgba(5, 15, 15, 0.96);
-  background: #050f0f;
+  background: #0f050f;
   filter: saturate(1.08) contrast(1.08);
 }
 
 .creative-window figcaption {
-  border-top: 1px solid #071313;
+  border-top: 1px solid #0f0713;
   padding: 7px 10px;
-  background: linear-gradient(180deg, #d1d8d3, #a0aaa5);
-  color: #071313;
+  background: linear-gradient(180deg, #d8d1d8, #a5a0a5);
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
 }
@@ -1512,11 +1512,11 @@ input {
 .lens-orbit {
   position: relative;
   aspect-ratio: 1;
-  border: 1px solid rgba(0, 229, 204, 0.28);
+  border: 1px solid rgba(255, 107, 157, 0.28);
   border-radius: 4px;
   background:
-    radial-gradient(circle at 50% 50%, rgba(0, 229, 204, 0.5), transparent 12%),
-    radial-gradient(circle at 50% 50%, transparent 22%, rgba(57, 255, 20, 0.18) 23%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.5), transparent 12%),
+    radial-gradient(circle at 50% 50%, transparent 22%, rgba(192, 132, 252, 0.18) 23%, transparent 25%),
     linear-gradient(135deg, rgba(13, 32, 32, 0.9), rgba(5, 15, 15, 0.7));
   overflow: hidden;
 }
@@ -1524,7 +1524,7 @@ input {
 .lens-orbit span {
   position: absolute;
   inset: calc(12% * var(--ring, 1));
-  border: 1px solid rgba(0, 229, 204, 0.32);
+  border: 1px solid rgba(255, 107, 157, 0.32);
   border-radius: 50%;
   animation: lensSpin 18s linear infinite;
 }
@@ -1583,7 +1583,7 @@ input {
   width: 13px;
   height: 22px;
   border-radius: 1px;
-  background: rgba(57, 255, 20, 0.22);
+  background: rgba(192, 132, 252, 0.22);
   border-color: var(--accent-secondary);
 }
 
@@ -1618,7 +1618,7 @@ input {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 8px rgba(0, 229, 204, 0.08), 0 0 20px rgba(0, 229, 204, 0.2);
+  box-shadow: inset 0 0 0 8px rgba(255, 107, 157, 0.08), 0 0 20px rgba(255, 107, 157, 0.2);
 }
 
 .konami-layer {
@@ -1630,7 +1630,7 @@ input {
   pointer-events: none;
   opacity: 0;
   transition: opacity 180ms ease;
-  background: repeating-linear-gradient(0deg, rgba(57, 255, 20, 0.08), rgba(57, 255, 20, 0.08) 1px, transparent 1px, transparent 8px);
+  background: repeating-linear-gradient(0deg, rgba(192, 132, 252, 0.08), rgba(192, 132, 252, 0.08) 1px, transparent 1px, transparent 8px);
 }
 
 .konami-layer[data-active="true"] {
@@ -2127,12 +2127,12 @@ input {
 }
 
 .desktop-icons button:hover {
-  background: rgba(0, 229, 204, 0.15);
+  background: rgba(255, 107, 157, 0.15);
   transform: translateY(-2px);
 }
 
 .desktop-icons button:active {
-  background: rgba(0, 229, 204, 0.25);
+  background: rgba(255, 107, 157, 0.25);
   transform: translateY(0);
 }
 
@@ -2149,7 +2149,7 @@ input {
   padding: 8px 10px;
   border: none;
   background: none;
-  color: #071313;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.76rem;
   text-align: left;
@@ -2158,8 +2158,8 @@ input {
 }
 
 .start-menu-nav button:hover {
-  background: linear-gradient(90deg, #061a78, #03443e 52%, #00a897);
-  color: #eafffb;
+  background: linear-gradient(90deg, #2a0066, #b026ff 52%, #ff00a0);
+  color: #fbeaff;
 }
 
 /* Win98 dialog */
@@ -2170,7 +2170,7 @@ input {
   align-items: center;
   padding: 18px;
   background: linear-gradient(180deg, rgba(183, 190, 185, 0.96), rgba(129, 145, 140, 0.92));
-  color: #071313;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.82rem;
 }
@@ -2199,17 +2199,17 @@ input {
 .win98-btn {
   min-width: 80px;
   padding: 4px 14px;
-  border: 1px solid #071313;
-  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
-  color: #071313;
+  border: 1px solid #0f0713;
+  background: linear-gradient(180deg, #f7f2f7, #a49da9);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #473e47;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.76rem;
   cursor: pointer;
 }
 
 .win98-btn:active {
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #3e4744;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #473e47;
 }
 
 /* Under Construction dialog */
@@ -2232,14 +2232,14 @@ input {
 .uc-dialog {
   width: 380px;
   max-width: 92vw;
-  background: linear-gradient(180deg, #b7beb9, #81918c);
-  border: 1px solid #071313;
+  background: linear-gradient(180deg, #c5b8c8, #81918c);
+  border: 1px solid #0f0713;
   box-shadow:
     inset 1px 1px #e8ebe9,
     inset -1px -1px #4a5552,
     6px 6px 0 rgba(0,0,0,0.4);
   font-family: "JetBrains Mono", monospace;
-  color: #071313;
+  color: #0f0713;
   animation: uc-pop-in 240ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -2253,8 +2253,8 @@ input {
   align-items: center;
   justify-content: space-between;
   padding: 4px 6px 4px 10px;
-  background: linear-gradient(90deg, #061a78, #03443e 52%, #00a897);
-  color: #eafffb;
+  background: linear-gradient(90deg, #2a0066, #b026ff 52%, #ff00a0);
+  color: #fbeaff;
   font-size: 0.78rem;
   font-weight: 700;
   text-shadow: 0 1px 0 rgba(0,0,0,0.4);
@@ -2266,10 +2266,10 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #071313;
-  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
-  color: #071313;
+  border: 1px solid #0f0713;
+  background: linear-gradient(180deg, #f7f2f7, #a49da9);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #473e47;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.9rem;
   line-height: 1;
@@ -2278,7 +2278,7 @@ input {
 }
 
 .uc-titlebar button.uc-close:active {
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #3e4744;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #473e47;
 }
 
 .uc-body {
@@ -2318,10 +2318,10 @@ input {
 .uc-ok {
   min-width: 80px;
   padding: 5px 18px;
-  border: 1px solid #071313;
-  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
-  color: #071313;
+  border: 1px solid #0f0713;
+  background: linear-gradient(180deg, #f7f2f7, #a49da9);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #473e47;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.8rem;
   font-weight: 700;
@@ -2329,20 +2329,20 @@ input {
 }
 
 .uc-ok:active {
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #3e4744;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #473e47;
 }
 
 /* Lighten the void background particles */
 .hero-section {
   background:
     linear-gradient(180deg, rgba(5, 15, 15, 0.02), rgba(5, 15, 15, 0.15) 72%, rgba(5, 15, 15, 0.35)),
-    radial-gradient(circle at 32% 46%, rgba(0, 229, 204, 0.08), transparent 28rem);
+    radial-gradient(circle at 32% 46%, rgba(255, 107, 157, 0.08), transparent 28rem);
 }
 
 .section-band::before {
   background:
-    linear-gradient(180deg, rgba(0, 229, 204, 0.02), transparent 44%),
-    radial-gradient(circle at 15% 20%, rgba(0, 229, 204, 0.04), transparent 24rem);
+    linear-gradient(180deg, rgba(255, 107, 157, 0.02), transparent 44%),
+    radial-gradient(circle at 15% 20%, rgba(255, 107, 157, 0.04), transparent 24rem);
 }
 
 /* ── Win98 Under Construction Overlay ───────────────────── */
@@ -2372,8 +2372,8 @@ input {
   align-items: center;
   gap: 6px;
   padding: 3px 5px 3px 6px;
-  background: linear-gradient(90deg, #061a78, #03443e 52%, #00a897);
-  color: #eafffb;
+  background: linear-gradient(90deg, #2a0066, #b026ff 52%, #ff00a0);
+  color: #fbeaff;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.2px;
@@ -2393,10 +2393,10 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #071313;
-  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
-  color: #071313;
+  border: 1px solid #0f0713;
+  background: linear-gradient(180deg, #f7f2f7, #a49da9);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #473e47;
+  color: #0f0713;
   font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   line-height: 1;
@@ -2405,7 +2405,7 @@ input {
 }
 
 .win98-uc-close:active {
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #3e4744;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #473e47;
 }
 
 .win98-uc-body {
@@ -2421,7 +2421,7 @@ input {
 
 .win98-uc-text {
   margin: 0;
-  color: #071313;
+  color: #0f0713;
   font-size: 13px;
   line-height: 1.5;
 }
@@ -2437,7 +2437,7 @@ input {
   border: 2px solid;
   border-color: #fff #808080 #808080 #fff;
   background: #c0c0c0;
-  color: #071313;
+  color: #0f0713;
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -2491,8 +2491,8 @@ input {
 .polaroid-gallery {
   position: relative;
   min-height: 420px;
-  background: linear-gradient(160deg, #0c1418, #0a1a1a);
-  border: 1px solid rgba(0, 229, 204, 0.18);
+  background: linear-gradient(160deg, #0a0418, #0f0a1a);
+  border: 1px solid rgba(255, 107, 157, 0.18);
   border-radius: 4px;
   padding: 28px;
   overflow: hidden;
@@ -2503,7 +2503,7 @@ input {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 80%, rgba(0, 229, 204, 0.04), transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.04), transparent 40%),
     radial-gradient(circle at 80% 20%, rgba(255, 42, 109, 0.03), transparent 35%);
   pointer-events: none;
 }
@@ -2542,8 +2542,8 @@ input {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: #050f0f;
-  border: 1px solid #c0c0b0;
+  background: #0f050f;
+  border: 1px solid #c0b0c0;
 }
 
 .polaroid-photo svg {
@@ -2621,7 +2621,7 @@ input {
 }
 
 .cert-folder-tab:hover {
-  background: rgba(0, 229, 204, 0.06);
+  background: rgba(255, 107, 157, 0.06);
 }
 
 .cert-folder-icon {
@@ -2665,7 +2665,7 @@ input {
 
 .cert-badge-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(0, 229, 204, 0.15);
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.15);
 }
 
 .cert-badge-link img {
@@ -2762,8 +2762,8 @@ input {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #39ff14;
-  box-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+  background: #00f0ff;
+  box-shadow: 0 0 8px rgba(192, 132, 252, 0.4);
   animation: pulseGreen 2.4s ease-in-out infinite;
 }
 
@@ -2785,13 +2785,13 @@ input {
 }
 
 .homelab-toggle:hover {
-  background: rgba(0, 229, 204, 0.1);
+  background: rgba(255, 107, 157, 0.1);
 }
 
 .homelab-toggle.is-active {
-  background: rgba(57, 255, 20, 0.1);
-  color: #39ff14;
-  border-color: rgba(57, 255, 20, 0.3);
+  background: rgba(192, 132, 252, 0.1);
+  color: #00f0ff;
+  border-color: rgba(192, 132, 252, 0.3);
 }
 
 .homelab-nodes {
@@ -2808,12 +2808,12 @@ input {
   padding: 10px 12px;
   border-radius: 3px;
   background: rgba(10, 26, 26, 0.5);
-  border: 1px solid rgba(0, 229, 204, 0.08);
+  border: 1px solid rgba(255, 107, 157, 0.08);
   transition: border-color 180ms ease;
 }
 
 .homelab-node:hover {
-  border-color: rgba(0, 229, 204, 0.2);
+  border-color: rgba(255, 107, 157, 0.2);
 }
 
 .homelab-node-info {
@@ -2842,17 +2842,17 @@ input {
 }
 
 .status-online {
-  color: #39ff14;
-  background: rgba(57, 255, 20, 0.1);
+  color: #00f0ff;
+  background: rgba(192, 132, 252, 0.1);
 }
 
 .status-degraded {
-  color: #f7f709;
+  color: #ffcc00;
   background: rgba(247, 247, 9, 0.1);
 }
 
 .status-slow {
-  color: #ff2a6d;
+  color: #ff0055;
   background: rgba(255, 42, 109, 0.1);
 }
 

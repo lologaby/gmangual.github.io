@@ -11,19 +11,19 @@ function BrandGlyph() {
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: "block" }}
     >
-      <rect width="38" height="38" fill="#071313" />
+      <rect width="38" height="38" fill="#0f0713" />
       {/* Monitor frame */}
-      <rect x="5" y="6" width="28" height="20" rx="1" fill="none" stroke="#00e5cc" strokeWidth="1.5" />
-      <rect x="7" y="8" width="24" height="16" fill="#0a1a1a" />
+      <rect x="5" y="6" width="28" height="20" rx="1" fill="none" stroke="#ff00a0" strokeWidth="1.5" />
+      <rect x="7" y="8" width="24" height="16" fill="#0f0a1a" />
       {/* Prompt cursor */}
-      <path d="M10 14L14 16L10 18V14Z" fill="#39ff14" />
-      <rect x="15" y="15" width="10" height="2" fill="#00e5cc" opacity="0.6" />
+      <path d="M10 14L14 16L10 18V14Z" fill="#00f0ff" />
+      <rect x="15" y="15" width="10" height="2" fill="#ff00a0" opacity="0.6" />
       {/* Signal wave */}
-      <path d="M22 22C24 18 26 18 28 22" stroke="#ff2a6d" strokeWidth="1.2" fill="none" />
-      <path d="M25 22C27 19 29 19 31 22" stroke="#f7f709" strokeWidth="1" fill="none" />
+      <path d="M22 22C24 18 26 18 28 22" stroke="#ff0055" strokeWidth="1.2" fill="none" />
+      <path d="M25 22C27 19 29 19 31 22" stroke="#ffcc00" strokeWidth="1" fill="none" />
       {/* Stand */}
-      <rect x="16" y="26" width="6" height="3" fill="#1a3a3a" />
-      <rect x="12" y="29" width="14" height="2" rx="1" fill="#1a3a3a" />
+      <rect x="16" y="26" width="6" height="3" fill="#3a1a3a" />
+      <rect x="12" y="29" width="14" height="2" rx="1" fill="#3a1a3a" />
     </svg>
   );
 }

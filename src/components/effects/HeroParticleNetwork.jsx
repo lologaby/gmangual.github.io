@@ -98,13 +98,13 @@ function Network() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" count={particles.length} array={pointPositions} itemSize={3} />
         </bufferGeometry>
-        <pointsMaterial color="#00e5cc" size={0.035} transparent opacity={0.92} sizeAttenuation />
+        <pointsMaterial color="#ff00a0" size={0.035} transparent opacity={0.92} sizeAttenuation />
       </points>
       <lineSegments ref={linesRef}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" count={linePositions.length / 3} array={linePositions} itemSize={3} />
         </bufferGeometry>
-        <lineBasicMaterial color="#00e5cc" transparent opacity={0.18} />
+        <lineBasicMaterial color="#ff00a0" transparent opacity={0.18} />
       </lineSegments>
     </>
   );
