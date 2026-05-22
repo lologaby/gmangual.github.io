@@ -87,7 +87,12 @@ export default function Hero() {
             lineHeight: 1.55,
           }}
         >
-          systems should be boring. the website does not have to be.
+          <p style={{ margin: "0 0 8px" }}>systems should be boring.</p>
+          <p style={{ margin: "0 0 8px" }}>the website does not have to be.</p>
+          <p style={{ margin: 0, color: "#6a5a80", fontSize: "0.78rem" }}>
+            current status: automating procurement, managing 80+ devices,
+            and keeping the homelab uptime worth bragging about.
+          </p>
         </div>
       </WindowFrame>
     </section>

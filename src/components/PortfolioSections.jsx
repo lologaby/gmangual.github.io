@@ -67,18 +67,21 @@ export function AboutSection({ inWindow = false }) {
       <div className="about-grid stagger-in">
         <article className="about-manifesto">
           <p>
-            I like systems that feel calm from the outside because the inside is handled:
-            clean docs, predictable support paths, visible device state, and automation that
-            removes the repetitive work without making the business fragile.
+            Four years in a telecom NOC taught me that most outages start with missing
+            documentation and end with someone who left the company two years ago. I fix
+            that upstream: clean runbooks, automated checks that catch drift before it
+            becomes downtime, and device management that does not require a desk.
           </p>
           <p>
-            The personality is still there: homelab experiments, photography, interfaces with
-            motion, late-night troubleshooting, and a healthy respect for the fact that production
-            work has to be boring in the best way.
+            At Novus I support commercial operations across procurement, inventory, and
+            logistics. I write Python that talks to SAP, manage an Intune fleet of 80+
+            Zebra scanners, and maintain a BookStack knowledge base that actually gets
+            read. My homelab runs Proxmox, Docker, TrueNAS, and enough monitoring to know
+            when my own stuff breaks before I do.
           </p>
         </article>
         <div className="signal-stack" aria-label="Operating principles">
-          {["Automate repeatable work", "Document the critical path", "Design for support handoff", "Make mobile useful first"].map(
+          {["Automate the repeatable", "Document the critical path", "Design for support handoff", "Make mobile useful first"].map(
             (item) => (
               <span key={item}>{item}</span>
             ),
@@ -90,9 +93,10 @@ export function AboutSection({ inWindow = false }) {
             <div aria-hidden="true"><b>_</b><b>□</b><b>×</b></div>
           </div>
           <dl>
-            <div><dt>location</dt><dd>Puerto Rico</dd></div>
-            <div><dt>mode</dt><dd>ops / automation / archive</dd></div>
-            <div><dt>after hours</dt><dd>homelab, photos, late-night interfaces</dd></div>
+            <div><dt>location</dt><dd>San Juan, Puerto Rico</dd></div>
+            <div><dt>current</dt><dd>IT Specialist @ Novus Inc.</dd></div>
+            <div><dt>stack</dt><dd>Python, SAP, Intune, Proxmox, PostgreSQL</dd></div>
+            <div><dt>after hours</dt><dd>homelab, photography, late-night troubleshooting</dd></div>
             <div><dt>status</dt><dd>building useful things</dd></div>
           </dl>
         </figure>
@@ -103,7 +107,7 @@ export function AboutSection({ inWindow = false }) {
 
 export function SkillsSection({ inWindow = false }) {
   const [query, setQuery] = useState("proxmox");
-  const answer = skillQueries[query.toLowerCase()] ?? "No exact match yet. Try proxmox, python, intune, fortinet, or documentation.";
+  const answer = skillQueries[query.toLowerCase()] ?? "No exact match in the index. Try: python, proxmox, intune, fortinet, documentation, docker, linux, or zabbix.";
 
   const positionedSkills = useMemo(
     () =>
@@ -120,7 +124,7 @@ export function SkillsSection({ inWindow = false }) {
       <SectionHeader
         eyebrow="skills"
         title="Not a tag cloud."
-        copy="A small constellation of the tools and habits I keep reaching for."
+        copy="Tools I have actually used in production, not a wishlist. Hover or search for the story behind each one."
       />
       <div className="skills-layout">
         <div className="skill-constellation stagger-in" aria-label="Skill constellation">
@@ -159,7 +163,7 @@ export function ProjectsSection({ projectRailRef, inWindow = false }) {
       <SectionHeader
         eyebrow="projects"
         title="Real work, wired weird."
-        copy="The projects recruiters need to understand, presented with enough signal that developers keep scrolling."
+        copy="Four projects that explain what I actually do: automate the boring, document the critical, and keep devices under control."
       />
       <div className="project-rail" ref={projectRailRef}>
         {projects.map((project, index) => {
@@ -213,7 +217,7 @@ export function CertificationsSection({ inWindow = false }) {
       <SectionHeader
         eyebrow="certifications"
         title="Proof, not decoration."
-        copy="Public badge evidence for the Fortinet certifications referenced across the site and resume."
+        copy="Certifications earned in production environments, not just exam rooms. Click to verify on Credly."
       />
       <div className="cert-folder-grid stagger-in">
         {certifications.map((cert) => (
@@ -230,7 +234,7 @@ export function TimelineSection({ inWindow = false }) {
       <SectionHeader
         eyebrow="timeline"
         title="Where the work happened."
-        copy="Current role first, because the resume QR path should answer the obvious recruiter question immediately."
+        copy="From NOC nights to commercial operations. Every role taught something that still shows up in the current stack."
       />
       <div className="tracing-beam">
         {timeline.map((item) => (
@@ -260,9 +264,15 @@ export function CreativeSection({ inWindow = false }) {
         <PolaroidGallery />
         <div>
           <p>
-            I like technology that works, but I also care how it feels. That is where the
-            photography and design side comes in: composition, texture, light, rhythm, and enough
-            weirdness to make the work memorable without turning it into noise.
+            I build systems that work, but I also care how they feel. Photography trains the
+            same muscle: composition, texture, light, rhythm, and knowing when to leave
+            something out. These polaroids are from San Juan streets, Isabela coastline,
+            and late-night drives where the only good light is the one you chase.
+          </p>
+          <p>
+            The same eye shows up in interfaces: what to emphasize, what to hide, and how
+            to make complex information feel calm. Systems thinking and visual thinking
+            are not separate disciplines. They are the same discipline from different angles.
           </p>
           <a className="button button-secondary" href="https://www.instagram.com/AlexGabrielPh" target="_blank" rel="noreferrer">
             &gt;_ @AlexGabrielPh
@@ -278,13 +288,17 @@ export function ContactSection({ inWindow = false }) {
     <section className={`section-band contact-section ${inWindow ? "window-section" : ""}`} id="contact" data-cursor="terminal">
       <div className="contact-panel stagger-in">
         <span>contact</span>
-        <h2>Need someone who can support the business and still build the automation?</h2>
+        <h2>Need someone who can keep the lights on and still ship the automation?</h2>
+        <p>
+          I am open to IT systems, operations, automation, and infrastructure support roles.
+          Remote-first with willingness to travel. Based in Puerto Rico, connected everywhere.
+        </p>
         <div className="contact-actions">
           <a className="button button-primary" href="mailto:support@alexberrios.com">
             &gt;_ support@alexberrios.com
           </a>
           <a className="button button-secondary" href="/resume/resume.pdf" target="_blank" rel="noreferrer">
-            &gt;_ general resume
+            &gt;_ download resume
           </a>
         </div>
       </div>

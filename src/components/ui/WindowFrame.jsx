@@ -20,6 +20,7 @@ export default function WindowFrame({
   const winState = mgr.windows[id];
   const isMobile = useIsMobile();
   const nodeRef = useRef(null);
+  const titlebarRef = useRef(null);
   const dragStart = useRef({ x: 0, y: 0, rectX: 0, rectY: 0 });
   const [pos, setPos] = useState({ x: defaultX, y: defaultY });
   const [size, setSize] = useState({
@@ -37,6 +38,7 @@ export default function WindowFrame({
     (e) => {
       if (isMobile) return;
       if (e.target.closest(".window-titlebar-controls")) return;
+      e.stopPropagation();
       mgr.bringToFront(id);
       const rect = nodeRef.current.getBoundingClientRect();
       dragStart.current = {
@@ -45,7 +47,7 @@ export default function WindowFrame({
         rectX: rect.left,
         rectY: rect.top,
       };
-      nodeRef.current.setPointerCapture(e.pointerId);
+      titlebarRef.current.setPointerCapture(e.pointerId);
     },
     [id, mgr, isMobile]
   );
@@ -53,7 +55,7 @@ export default function WindowFrame({
   const handlePointerMove = useCallback(
     (e) => {
       if (isMobile) return;
-      if (!nodeRef.current.hasPointerCapture(e.pointerId)) return;
+      if (!titlebarRef.current.hasPointerCapture(e.pointerId)) return;
       if (winState?.maximized) return;
       const dx = e.clientX - dragStart.current.x;
       const dy = e.clientY - dragStart.current.y;
@@ -66,8 +68,8 @@ export default function WindowFrame({
   );
 
   const handlePointerUp = useCallback((e) => {
-    if (nodeRef.current?.hasPointerCapture(e.pointerId)) {
-      nodeRef.current.releasePointerCapture(e.pointerId);
+    if (titlebarRef.current?.hasPointerCapture(e.pointerId)) {
+      titlebarRef.current.releasePointerCapture(e.pointerId);
     }
   }, []);
 
@@ -116,6 +118,7 @@ export default function WindowFrame({
       onPointerDown={() => mgr.bringToFront(id)}
     >
       <div
+        ref={titlebarRef}
         className="window-titlebar"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

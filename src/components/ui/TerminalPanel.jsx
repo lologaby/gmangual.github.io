@@ -2,8 +2,9 @@ import { useMemo, useRef, useState } from "react";
 import { terminalCommands } from "../../data/site.js";
 
 const defaultLines = [
-  "interactive shell ready",
-  "type help, whoami, or search --skill proxmox",
+  "alex_archive_shell v2.1 — interactive mode",
+  "type 'help' for commands, 'whoami' for credentials,",
+  "or 'search --skill python' to see what I actually build.",
 ];
 
 export default function TerminalPanel() {
