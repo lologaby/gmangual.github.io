@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Berrios - Proxmox Stack Infographic</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet (for common styles like nav, footer, etc.) -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Page-specific Stylesheet -->
+    <link rel="stylesheet" href="/css/proxmox-stack.css">
+</head>
+<body class="antialiased">
+
+    <header class="glass-nav sticky top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white">Home Lab Infrastructure</h1>
+            <a href="index.html" class="text-gray-300 hover:text-white transition-colors">&larr; Back to Portfolio</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <section class="text-center mb-16 md:mb-24">
+            <h2 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+                My Proxmox Stack.
+            </h2>
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-400">
+                An interactive overview of my self-hosted environment. Click on the nodes to expand and explore the architecture.
+            </p>
+        </section>
+
+        <div id="infographic-container" class="w-full flex justify-center p-4">
+            <!-- D3.js will mount the SVG here -->
+        </div>
+        
+    </main>
+
+    <footer class="bg-black py-10 mt-16">
+        <div class="container mx-auto text-center text-gray-500">
+            <p>&copy; 2024 Alex Berrios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- D3.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <!-- Custom Script -->
+    <script src="/js/proxmox-stack.js"></script>
+</body>
+</html>
