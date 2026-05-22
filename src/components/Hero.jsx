@@ -35,7 +35,7 @@ export default function Hero() {
         id="hero-main"
         title="ALEX_ARCHIVE.EXE"
         defaultX={240}
-        defaultY={110}
+        defaultY={46}
         defaultWidth={680}
         style={{ maxWidth: "min(720px, 90vw)" }}
       >
@@ -61,7 +61,7 @@ export default function Hero() {
         id="hero-terminal"
         title="mindset.txt"
         defaultX={940}
-        defaultY={110}
+        defaultY={46}
         defaultWidth={380}
         style={{ maxWidth: "min(400px, 90vw)" }}
       >
@@ -72,7 +72,7 @@ export default function Hero() {
         id="hero-broadcast"
         title="late_night_signal.txt"
         defaultX={940}
-        defaultY={460}
+        defaultY={396}
         defaultWidth={340}
         style={{ maxWidth: "min(360px, 90vw)" }}
       >

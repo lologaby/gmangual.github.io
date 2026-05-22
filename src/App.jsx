@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero.jsx";
-import Navigation from "./components/Navigation.jsx";
 import PortfolioSections from "./components/PortfolioSections.jsx";
 import CustomCursor from "./components/effects/CustomCursor.jsx";
 import VoidBackground from "./components/effects/VoidBackground.jsx";
@@ -80,8 +79,6 @@ function AppContent() {
       <div className="konami-layer" data-active={isKonamiActive} aria-hidden="true">
         <span>Boricua ops mode unlocked</span>
       </div>
-
-      <Navigation />
 
       <motion.main
         variants={sectionVariants}
