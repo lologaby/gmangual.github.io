@@ -2332,26 +2332,28 @@ input {
 }
 
 /* ── Win98 Under Construction Overlay ───────────────────── */
-.win98-overlay {
+.win98-uc-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
   display: grid;
   place-items: center;
+  padding: 16px;
   background: rgba(5, 15, 15, 0.92);
   font-family: "MS Sans Serif", Tahoma, "Arial Narrow", Arial, sans-serif;
   image-rendering: pixelated;
 }
 
-.win98-dialog {
-  width: min(420px, 92vw);
+.win98-uc-dialog {
+  width: min(420px, 100%);
+  max-width: 420px;
   border: 2px solid;
   border-color: #dfdfdf #000 #000 #dfdfdf;
   background: #c0c0c0;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
 }
 
-.win98-titlebar {
+.win98-uc-titlebar {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -2363,37 +2365,37 @@ input {
   letter-spacing: 0.2px;
 }
 
-.win98-titlebar-text {
+.win98-uc-titlebar-text {
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.win98-dialog-body {
+.win98-uc-body {
   padding: 18px 16px 14px;
 }
 
-.win98-dialog-row {
+.win98-uc-row {
   display: flex;
   align-items: flex-start;
   gap: 14px;
   margin-bottom: 18px;
 }
 
-.win98-dialog-text {
+.win98-uc-text {
   margin: 0;
   color: #071313;
   font-size: 13px;
   line-height: 1.5;
 }
 
-.win98-dialog-actions {
+.win98-uc-actions {
   display: flex;
   justify-content: center;
 }
 
-.win98-btn {
+.win98-uc-btn {
   min-width: 86px;
   padding: 4px 14px;
   border: 2px solid;
@@ -2406,7 +2408,42 @@ input {
   cursor: pointer;
 }
 
-.win98-btn:active {
+.win98-uc-btn:active {
   border-color: #808080 #fff #fff #808080;
   padding: 5px 13px 3px 15px;
+}
+
+@media (max-width: 480px) {
+  .win98-uc-overlay {
+    padding: 12px;
+    align-items: flex-start;
+    padding-top: 20vh;
+  }
+
+  .win98-uc-dialog {
+    width: 100%;
+    max-width: none;
+  }
+
+  .win98-uc-body {
+    padding: 14px 12px 12px;
+  }
+
+  .win98-uc-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .win98-uc-text {
+    font-size: 12px;
+  }
+
+  .win98-uc-btn {
+    min-width: 72px;
+    padding: 5px 16px;
+    font-size: 13px;
+  }
 }

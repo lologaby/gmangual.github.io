@@ -45,24 +45,24 @@ export default function UnderConstructionDialog() {
   if (bypassed) return null;
 
   return (
-    <div className="win98-overlay">
-      <div className="win98-dialog">
-        <div className="win98-titlebar">
-          <span className="win98-titlebar-text">System Message</span>
+    <div className="win98-uc-overlay">
+      <div className="win98-uc-dialog">
+        <div className="win98-uc-titlebar">
+          <span className="win98-uc-titlebar-text">System Message</span>
         </div>
-        <div className="win98-dialog-body">
-          <div className="win98-dialog-row">
+        <div className="win98-uc-body">
+          <div className="win98-uc-row">
             <PixelExclamationIcon />
-            <p className="win98-dialog-text">
+            <p className="win98-uc-text">
               This site is currently under construction.
               <br />
               Please check back later.
             </p>
           </div>
-          <div className="win98-dialog-actions">
+          <div className="win98-uc-actions">
             <button
               type="button"
-              className="win98-btn"
+              className="win98-uc-btn"
               onClick={() => {
                 if (import.meta.env.DEV) {
                   try {
