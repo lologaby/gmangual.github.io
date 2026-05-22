@@ -2,7 +2,7 @@ export const navItems = [
   { label: "about", href: "#about" },
   { label: "skills", href: "#skills" },
   { label: "projects", href: "#projects" },
-  { label: "certs", href: "#certifications" },
+  { label: "proof", href: "#certifications" },
   { label: "timeline", href: "#timeline" },
   { label: "creative", href: "#creative" },
   { label: "contact", href: "#contact" },
@@ -12,7 +12,7 @@ export const heroCopy = {
   name: "Alex Berrios Mangual",
   title: "IT Systems Specialist | Commercial Operations & Automation",
   subtitle:
-    "I build systems that don't break, automate what shouldn't be manual, and document everything in between.",
+    "I build the boring parts that keep work moving: automation, support paths, device control, and documentation people can actually use.",
   email: "support@alexberrios.com",
 };
 
@@ -71,6 +71,7 @@ export const projects = [
     summary:
       "Automation layer for procurement workflows: structured records, repeatable checks, and cleaner operational visibility.",
     visual: "procurement",
+    imagePosition: "0% 0%",
   },
   {
     title: "NOC Reporting Tool",
@@ -79,6 +80,7 @@ export const projects = [
     summary:
       "Desktop reporting tool for NOC workflows, built around quick entry, consistent output, and cloud-backed records.",
     visual: "noc",
+    imagePosition: "100% 0%",
   },
   {
     title: "BookStack + osTicket Platform",
@@ -87,6 +89,7 @@ export const projects = [
     summary:
       "Support platform combining ticket intake with searchable documentation so fixes become reusable knowledge.",
     visual: "support",
+    imagePosition: "0% 100%",
   },
   {
     title: "Zebra Device Fleet",
@@ -95,6 +98,7 @@ export const projects = [
     summary:
       "Managed Zebra endpoint fleet with enrollment structure, policy consistency, inventory visibility, and mobile-first support.",
     visual: "fleet",
+    imagePosition: "100% 100%",
   },
 ];
 
@@ -123,7 +127,9 @@ export const terminalCommands = {
     "whoami",
     "search --skill proxmox",
     "cat mindset.txt",
+    "cat archivo.txt",
     "photo --where",
+    "play signal",
     "sudo hire alex",
   ],
   whoami: [
@@ -139,7 +145,13 @@ export const terminalCommands = {
     "Document the critical.",
     "Keep the system boring so the work can get interesting.",
   ],
+  "cat archivo.txt": [
+    "C:\\ALEX_ARCHIVE\\notes",
+    "professional enough for uptime, weird enough to remember",
+    "san juan signal: strong",
+  ],
   "photo --where": ["creative signal: @AlexGabrielPh", "status: chasing light after deployments"],
+  "play signal": ["broadcast starts at 02:17", "low volume. high texture. ship the fix."],
   "sudo hire alex": ["permission granted", "email: support@alexberrios.com"],
   sudo: ["usage: sudo hire alex"],
 };

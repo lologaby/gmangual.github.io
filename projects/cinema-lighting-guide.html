@@ -64,11 +64,11 @@
             <p>We'll create two separate automations for easier management.</p>
 
             <h4>1. Movie Playing: Dim Lights</h4>
-            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Trigger+Configuration" alt="[Captura de pantalla de la configuración del disparador en la GUI de HA]" class="rounded-lg my-4">
+            <img src="/assets/generated/cinema-lighting-dashboard.png" alt="Cinema lighting dashboard with dimming controls and scene presets" class="rounded-lg my-4">
             <p>Create an automation that triggers when the Apple TV state changes to <code>playing</code>. In the actions, use a "Choose" block to create different sequences based on the <code>app_name</code> attribute (e.g., one for "Netflix" and another for "Hulu").</p>
 
             <h4>2. Movie Paused: Brighten Lights</h4>
-            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Screenshot:+Action+Configuration" alt="[Captura de pantalla de la configuración de la acción en la GUI de HA]" class="rounded-lg my-4">
+            <img src="/assets/generated/cinema-automation-flow.png" alt="Automation flow editor showing cinema lighting actions" class="rounded-lg my-4">
             <p>Create a second automation that triggers when the Apple TV state changes to <code>paused</code>. The action should be a simple service call to turn on your main lights to a comfortable brightness.</p>
 
             <hr class="my-12 border-gray-700">

@@ -42,7 +42,7 @@
             <h3>Part 1: Flashing Tasmota</h3>
             <p>The flashing process can vary greatly between devices. Before purchasing or attempting to flash any device, it is crucial to verify its compatibility. The <strong><a href="https://templates.blakadder.com/" target="_blank" rel="noopener noreferrer">Blakadder Tasmota Device Repository</a></strong> is the definitive community-run database for this.</p>
             <p>Once you have confirmed your device is compatible, you can proceed. The most common method for Tuya devices is using a tool like <a href="https://github.com/tasmota/tasmotizer" target="_blank" rel="noopener noreferrer">Tasmotizer</a>. This typically involves soldering temporary wires to the ESP8266 chip's serial pins inside the switch to connect your USB-to-serial adapter.</p>
-            <img src="https://placehold.co/800x400/111827/FFFFFF?text=Diagrama+de+pines+del+ESP8266+para+flasheo" alt="[Diagrama de pines del ESP8266 para flasheo]" class="rounded-lg my-4">
+            <img src="/assets/generated/esp8266-flashing-workbench.png" alt="ESP8266 flashing workbench with jumper wires and serial adapter" class="rounded-lg my-4">
 
             <h3>Part 2: Configuring Multi-Press Actions in Tasmota</h3>
             <p>Once Tasmota is installed, connect it to your Wi-Fi and access its web interface. To enable multi-press functionality, you need to use Tasmota's powerful `Rules` feature. First, access the Tasmota Console.</p>
@@ -61,7 +61,7 @@
 
             <h3>Part 3: Home Assistant Automation</h3>
             <p>Now, we'll create an automation in Home Assistant to listen to these MQTT messages and perform different actions.</p>
-             <img src="https://placehold.co/800x400/111827/FFFFFF?text=Captura+de+pantalla:+Automatización+en+la+GUI+de+HA" alt="[Captura de pantalla de la automatización en la GUI de HA]" class="rounded-lg my-4">
+             <img src="/assets/generated/cinema-automation-flow.png" alt="Dark-mode automation flow editor showing trigger, condition, and action blocks" class="rounded-lg my-4">
             
             <h4>YAML Configuration</h4>
             <p>Go to <strong>Settings > Automations & Scenes</strong> and create a new automation. You can build it in the GUI or paste the following YAML code by clicking the 3-dot menu and selecting "Edit in YAML".</p>
