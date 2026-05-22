@@ -34,21 +34,29 @@ function PixelExclamationIcon() {
 }
 
 export default function UnderConstructionDialog() {
-  const [bypassed, setBypassed] = useState(() => {
+  const [dismissed, setDismissed] = useState(() => {
     try {
-      return import.meta.env.DEV && localStorage.getItem("devBypass") === "1";
+      return sessionStorage.getItem("ucDismissed") === "1";
     } catch {
       return false;
     }
   });
 
-  if (bypassed) return null;
+  if (dismissed) return null;
+
+  const handleDismiss = () => {
+    try {
+      sessionStorage.setItem("ucDismissed", "1");
+    } catch {}
+    setDismissed(true);
+  };
 
   return (
-    <div className="win98-uc-overlay">
-      <div className="win98-uc-dialog">
+    <div className="win98-uc-overlay" onClick={handleDismiss}>
+      <div className="win98-uc-dialog" onClick={(e) => e.stopPropagation()}>
         <div className="win98-uc-titlebar">
           <span className="win98-uc-titlebar-text">System Message</span>
+          <button className="win98-uc-close" onClick={handleDismiss} aria-label="Close">×</button>
         </div>
         <div className="win98-uc-body">
           <div className="win98-uc-row">
@@ -63,14 +71,7 @@ export default function UnderConstructionDialog() {
             <button
               type="button"
               className="win98-uc-btn"
-              onClick={() => {
-                if (import.meta.env.DEV) {
-                  try {
-                    localStorage.setItem("devBypass", "1");
-                  } catch {}
-                  setBypassed(true);
-                }
-              }}
+              onClick={handleDismiss}
             >
               OK
             </button>

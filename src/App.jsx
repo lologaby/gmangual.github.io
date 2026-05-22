@@ -89,7 +89,9 @@ function AppContent() {
         animate={booted ? "show" : "hidden"}
       >
         <Hero />
-        <PortfolioSections />
+        <div className="portfolio-scroll-sections">
+          <PortfolioSections />
+        </div>
       </motion.main>
 
       <DesktopAppWindows />

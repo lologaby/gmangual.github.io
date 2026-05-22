@@ -573,6 +573,9 @@ input {
   color: #eafffb;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
   font-weight: 700;
 }
 
@@ -605,6 +608,7 @@ input {
     0 0 0 1px rgba(0, 0, 0, 0.5),
     0 20px 60px rgba(0, 0, 0, 0.6),
     0 8px 24px rgba(0, 0, 0, 0.4);
+  touch-action: none;
 }
 
 .window-titlebar-controls {
@@ -1733,9 +1737,17 @@ input {
   }
 }
 
+.portfolio-scroll-sections {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .desktop-icons {
     display: none;
+  }
+
+  .portfolio-scroll-sections {
+    display: block;
   }
 
   .nav-shell {
@@ -1785,11 +1797,11 @@ input {
   }
 
   .hero-title {
-    font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+    font-size: clamp(0.8rem, 3vw, 1rem);
   }
 
   .hero-subtitle {
-    font-size: clamp(0.8rem, 3vw, 1rem);
+    font-size: clamp(0.75rem, 2.8vw, 0.95rem);
   }
 
   .hero-actions {
@@ -1887,7 +1899,7 @@ input {
   }
 
   .hero-window-body h1 {
-    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
   }
 
   .hero-copy h1 {
@@ -1916,11 +1928,13 @@ input {
 
   .section-header h2,
   .contact-panel h2 {
-    font-size: clamp(1.6rem, 8vw, 2.4rem);
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+    line-height: 1.1;
   }
 
   .section-header p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .skill-constellation {
@@ -1937,7 +1951,7 @@ input {
   }
 
   .terminal-screen {
-    min-height: 240px;
+    min-height: 180px;
     padding: 12px;
     font-size: 0.72rem;
   }
@@ -2358,11 +2372,12 @@ input {
   align-items: center;
   gap: 6px;
   padding: 3px 5px 3px 6px;
-  background: linear-gradient(90deg, #000080, #1084d0);
-  color: #fff;
+  background: linear-gradient(90deg, #061a78, #03443e 52%, #00a897);
+  color: #eafffb;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.2px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 }
 
 .win98-uc-titlebar-text {
@@ -2370,6 +2385,27 @@ input {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.win98-uc-close {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #071313;
+  background: linear-gradient(180deg, #f2f7f3, #9da9a4);
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #3e4744;
+  color: #071313;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.win98-uc-close:active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #3e4744;
 }
 
 .win98-uc-body {
