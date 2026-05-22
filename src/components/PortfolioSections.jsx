@@ -3,7 +3,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { certifications, projects, skillQueries, skills, timeline } from "../data/site.js";
 import { GlitchText, ScrollFloat } from "./ui/TextEffects.jsx";
-import { ProcurementVisual, NocVisual, SupportVisual, FleetVisual } from "./ui/ProjectVisuals.jsx";
+import {
+  ProcurementScreenshot,
+  NocScreenshot,
+  SupportScreenshot,
+  FleetScreenshot,
+} from "./ui/ProjectScreenshots.jsx";
+import PolaroidGallery from "./ui/PolaroidGallery.jsx";
+import CertFolder from "./ui/CertFolder.jsx";
+import HomelabConnectivity from "./widgets/HomelabConnectivity.jsx";
 
 const skillPositions = [
   [12, 16],
@@ -18,13 +26,20 @@ const skillPositions = [
   [28, 43],
   [76, 20],
   [25, 27],
+  [82, 55],
+  [14, 74],
+  [56, 10],
+  [32, 80],
+  [70, 22],
+  [86, 38],
+  [8, 40],
 ];
 
 const VISUAL_MAP = {
-  procurement: ProcurementVisual,
-  noc: NocVisual,
-  support: SupportVisual,
-  fleet: FleetVisual,
+  procurement: ProcurementScreenshot,
+  noc: NocScreenshot,
+  support: SupportScreenshot,
+  fleet: FleetScreenshot,
 };
 
 export function SectionHeader({ eyebrow, title, copy }) {
@@ -200,16 +215,9 @@ export function CertificationsSection({ inWindow = false }) {
         title="Proof, not decoration."
         copy="Public badge evidence for the Fortinet certifications referenced across the site and resume."
       />
-      <div className="cert-grid">
+      <div className="cert-folder-grid stagger-in">
         {certifications.map((cert) => (
-          <a className="cert-card stagger-in" href={cert.url} target="_blank" rel="noreferrer" key={cert.title}>
-            <img src={cert.image} alt={`${cert.title} badge`} />
-            <div>
-              <span>{cert.issuer}</span>
-              <h3>{cert.title}</h3>
-              <p>{cert.description}</p>
-            </div>
-          </a>
+          <CertFolder key={cert.title} cert={cert} />
         ))}
       </div>
     </section>
@@ -249,14 +257,7 @@ export function CreativeSection({ inWindow = false }) {
         copy="Photography, graphic cleanup, interface taste, and the visual side of systems thinking."
       />
       <div className="creative-grid stagger-in">
-        <figure className="creative-window">
-          <div className="window-titlebar">
-            <span>creative_archive.exe</span>
-            <div aria-hidden="true"><b>_</b><b>□</b><b>×</b></div>
-          </div>
-          <img src="/assets/generated/polaroid-archive.png" alt="Polaroid-style Puerto Rico night photography archive" />
-          <figcaption>polaroids / cars / systems / Puerto Rico nights</figcaption>
-        </figure>
+        <PolaroidGallery />
         <div>
           <p>
             I like technology that works, but I also care how it feels. That is where the

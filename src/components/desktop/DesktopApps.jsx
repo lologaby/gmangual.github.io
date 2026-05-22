@@ -8,6 +8,7 @@ import {
   CreativeSection,
   ContactSection,
 } from "../PortfolioSections.jsx";
+import HomelabConnectivity from "../widgets/HomelabConnectivity.jsx";
 
 const APP_CONFIG = {
   about: {
@@ -72,6 +73,15 @@ const APP_CONFIG = {
     defaultWidth: 540,
     defaultHeight: 380,
     Component: ContactSection,
+  },
+  homelab: {
+    id: "app-homelab",
+    title: "homelab_ping.exe",
+    defaultX: 100,
+    defaultY: 60,
+    defaultWidth: 520,
+    defaultHeight: 420,
+    Component: HomelabConnectivity,
   },
 };
 

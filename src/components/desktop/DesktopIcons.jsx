@@ -7,6 +7,7 @@ const DESKTOP_ITEMS = [
   { label: "about.txt", app: "about", emoji: "📄" },
   { label: "projects", app: "projects", emoji: "📁" },
   { label: "polaroids", app: "creative", emoji: "🖼️" },
+  { label: "homelab", app: "homelab", emoji: "🖥️" },
   { label: "contact", app: "contact", emoji: "📧" },
   { label: "coming_soon.txt", app: null, emoji: "🚧" },
 ];

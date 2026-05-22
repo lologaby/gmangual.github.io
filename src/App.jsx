@@ -119,6 +119,7 @@ function AppContent() {
               <button type="button" onClick={() => openApp("certifications")}>proof</button>
               <button type="button" onClick={() => openApp("timeline")}>timeline</button>
               <button type="button" onClick={() => openApp("creative")}>creative</button>
+              <button type="button" onClick={() => openApp("homelab")}>homelab</button>
               <button type="button" onClick={() => openApp("contact")}>contact</button>
             </nav>
             <div className="start-menu-divider" />
