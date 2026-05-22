@@ -34,7 +34,7 @@ export default function Navigation() {
       </nav>
 
       <div className="nav-actions">
-        <a className="button button-secondary" href="resume/resume.pdf" target="_blank" rel="noreferrer">
+        <a className="button button-secondary" href="/resume/resume.pdf" target="_blank" rel="noreferrer">
           &gt;_ resume
         </a>
         <a className="button button-primary" href="mailto:support@alexberrios.com">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Hero from "./components/Hero.jsx";
 import Navigation from "./components/Navigation.jsx";
+import PortfolioSections from "./components/PortfolioSections.jsx";
 import CustomCursor from "./components/effects/CustomCursor.jsx";
 import SudoRoute from "./routes/SudoRoute.jsx";
 import { useKonamiCode } from "./hooks/useKonamiCode.js";
@@ -48,6 +49,7 @@ export default function App() {
       <Navigation />
       <motion.main variants={sectionVariants} initial="hidden" animate="show">
         <Hero />
+        <PortfolioSections />
       </motion.main>
     </div>
   );

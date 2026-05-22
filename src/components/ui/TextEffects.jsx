@@ -41,3 +41,19 @@ export function BlurText({ text, className = "" }) {
     </motion.p>
   );
 }
+
+export function GlitchText({ text, as: Tag = "h2" }) {
+  return (
+    <Tag className="glitch-text" data-text={text}>
+      {text}
+    </Tag>
+  );
+}
+
+export function ScrollFloat({ children, className = "", style }) {
+  return (
+    <span className={`scroll-float ${className}`} style={style}>
+      {children}
+    </span>
+  );
+}

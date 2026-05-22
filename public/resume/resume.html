@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex Berrios Mangual - General Resume</title>
+    <style>
+      :root {
+        --ink: #102020;
+        --muted: #4d6767;
+        --rule: #c9d8d8;
+        --accent: #008b83;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.32;
+      }
+
+      main {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 0 auto;
+        padding: 0.48in 0.55in;
+      }
+
+      header {
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        margin: 0 0 4px;
+        font-size: 21pt;
+        letter-spacing: 0;
+      }
+
+      .title {
+        margin: 0 0 6px;
+        color: var(--accent);
+        font-size: 11.5pt;
+        font-weight: 700;
+      }
+
+      .contact {
+        color: var(--muted);
+        font-size: 9.4pt;
+      }
+
+      h2 {
+        margin: 13px 0 6px;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 3px;
+        color: var(--accent);
+        font-size: 11pt;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 10.8pt;
+      }
+
+      p {
+        margin: 0 0 6px;
+      }
+
+      ul {
+        margin: 4px 0 0 18px;
+        padding: 0;
+      }
+
+      li {
+        margin: 2px 0;
+      }
+
+      .entry {
+        margin-bottom: 9px;
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .entry-meta {
+        color: var(--muted);
+        font-size: 9.5pt;
+        white-space: nowrap;
+      }
+
+      .company {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .skills {
+        display: grid;
+        gap: 4px;
+      }
+
+      .skills strong {
+        color: var(--ink);
+      }
+
+      @media print {
+        body {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+
+        main {
+          margin: 0;
+          width: auto;
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Alex Berrios Mangual</h1>
+        <p class="title">IT Systems Specialist | Commercial Operations & Automation</p>
+        <p class="contact">
+          Puerto Rico | support@alexberrios.com | alexberrios.com |
+          linkedin.com/in/alex-berrios-mangual-b26b5a241
+        </p>
+      </header>
+
+      <section>
+        <h2>Professional Summary</h2>
+        <p>
+          IT Systems Specialist with experience across commercial operations support, network
+          operations, automation, endpoint management, documentation, and user-facing technical
+          support. Builds practical tools and repeatable workflows using Python, databases,
+          knowledge-base platforms, device management, monitoring, and structured troubleshooting.
+          Known for connecting business processes with reliable systems, clear documentation, and
+          calm operational support.
+        </p>
+      </section>
+
+      <section>
+        <h2>Technical Skills</h2>
+        <div class="skills">
+          <p><strong>Systems & Support:</strong> Windows, Linux, troubleshooting, SLA response, incident documentation, user support, hardware/software testing</p>
+          <p><strong>Automation & Data:</strong> Python, PostgreSQL, Firebase, reporting workflows, process automation, Tkinter desktop tools</p>
+          <p><strong>Endpoint & Platforms:</strong> Microsoft Intune, Android Enterprise, Zebra devices, BookStack, osTicket, SAP procurement workflows</p>
+          <p><strong>Network & Infrastructure:</strong> Fortinet, SolarWinds, Cacti, Proxmox, VMware, Docker, DNS, DHCP, TCP/IP, VPN, VLANs</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Professional Experience</h2>
+        <article class="entry">
+          <div class="entry-head">
+            <div>
+              <h3>IT Specialist</h3>
+              <div class="company">Novus Inc.</div>
+            </div>
+            <div class="entry-meta">Aug 2025 - Present</div>
+          </div>
+          <ul>
+            <li>Support commercial operations systems, user workflows, endpoint needs, documentation, and technical issue resolution across business-critical processes.</li>
+            <li>Build automation and reporting improvements using Python, structured data, and operational process analysis to reduce manual work and improve consistency.</li>
+            <li>Manage and support mobile and endpoint workflows, including Zebra device fleet operations, Intune controls, Android Enterprise enrollment, and inventory visibility.</li>
+            <li>Improve support handoff through BookStack documentation, osTicket workflows, and repeatable troubleshooting procedures.</li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-head">
+            <div>
+              <h3>NOC Tier 1</h3>
+              <div class="company">WorldNet</div>
+            </div>
+            <div class="entry-meta">Sep 2021 - Aug 2025</div>
+          </div>
+          <ul>
+            <li>Provided network monitoring, customer support, troubleshooting, and SLA-driven incident response for production network environments.</li>
+            <li>Managed outage alerts, communication follow-up, repair processes, and escalation details to support timely resolution and minimize downtime.</li>
+            <li>Used SolarWinds and Cacti to monitor performance, identify anomalies, analyze bandwidth and device metrics, and support operational decision-making.</li>
+            <li>Worked with Fortinet, Juniper, MikroTik, Adtran, and Cisco network equipment while collaborating with cross-functional teams on issue resolution.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>Selected Projects</h2>
+        <article class="entry">
+          <h3>SAP Procurement Automation</h3>
+          <p>Built Python/PostgreSQL automation support for procurement workflows, structured records, repeatable checks, and operational visibility.</p>
+        </article>
+        <article class="entry">
+          <h3>NOC Reporting Tool</h3>
+          <p>Built a Python/Tkinter/Firebase reporting tool focused on faster shift reporting, consistent data capture, and accessible operational records.</p>
+        </article>
+        <article class="entry">
+          <h3>BookStack + osTicket Platform</h3>
+          <p>Implemented a support knowledge loop connecting ticket intake with searchable documentation and reusable procedures.</p>
+        </article>
+        <article class="entry">
+          <h3>Zebra Device Fleet</h3>
+          <p>Supported an 88-device Zebra fleet using Intune and Android Enterprise practices for enrollment, app policy, inventory, and support consistency.</p>
+        </article>
+      </section>
+
+      <section>
+        <h2>Certifications</h2>
+        <p>Fortinet Certified Associate Cybersecurity - Fortinet / Credly</p>
+        <p>Fortinet Certified Fundamentals Cybersecurity - Fortinet / Credly</p>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <p><strong>Network Technology and Applications Development</strong> - NUC University, Bayamon, PR | 2017 - 2022</p>
+      </section>
+
+      <section>
+        <h2>Additional</h2>
+        <p>Photography, graphic design, photo retouching, homelab infrastructure, server management, technical documentation, and self-hosted systems.</p>
+      </section>
+    </main>
+  </body>
+</html>

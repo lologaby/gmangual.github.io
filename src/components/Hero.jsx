@@ -33,7 +33,7 @@ export default function Hero() {
             <a className="button button-primary" href="#projects">
               &gt;_ inspect work
             </a>
-            <a className="button button-secondary" href="mailto:support@alexberrios.com">
+            <a className="button button-secondary" href="#contact">
               &gt;_ open channel
             </a>
           </div>
