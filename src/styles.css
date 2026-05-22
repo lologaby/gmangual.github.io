@@ -53,7 +53,7 @@ body {
 body,
 button,
 input {
-  cursor: none;
+  cursor: auto;
 }
 
 a {

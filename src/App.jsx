@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero.jsx";
 import PortfolioSections from "./components/PortfolioSections.jsx";
-import CustomCursor from "./components/effects/CustomCursor.jsx";
 import VoidBackground from "./components/effects/VoidBackground.jsx";
 import BootSequence from "./components/effects/BootSequence.jsx";
 import UnderConstructionDialog from "./components/effects/UnderConstructionDialog.jsx";
@@ -73,7 +72,6 @@ function AppContent() {
         {!booted && <BootSequence key="boot" onComplete={() => setBooted(true)} />}
       </AnimatePresence>
 
-      <CustomCursor />
       <VoidBackground />
       <div className="noise-overlay" aria-hidden="true" />
       <div className="konami-layer" data-active={isKonamiActive} aria-hidden="true">
