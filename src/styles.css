@@ -2930,3 +2930,334 @@ input {
 .window-section .homelab-widget {
   max-width: 100%;
 }
+
+/* =========================================
+   Internet Explorer Frame
+   ========================================= */
+
+.ie-frame {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: #c5c0c8;
+  border: 2px solid #c5c0c8;
+  box-shadow:
+    inset 1px 1px #fff,
+    inset -1px -1px #403840,
+    0 0 0 1px #808080;
+}
+
+/* Title bar */
+.ie-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 3px;
+  background: linear-gradient(180deg, #2a0066 0%, #1a0040 100%);
+  color: #fff;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.ie-titlebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.ie-titlebar-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ie-titlebar-buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.ie-titlebar-buttons button {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #fff;
+  background: linear-gradient(180deg, #c5b8c8, #9b8f9b);
+  color: #0f0713;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow:
+    inset 1px 1px #fff,
+    inset -1px -1px #403840;
+  cursor: pointer;
+}
+
+.ie-titlebar-buttons button:active {
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #403840;
+}
+
+.ie-titlebar-buttons button:last-child {
+  background: linear-gradient(180deg, #e08080, #c04040);
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Menu bar */
+.ie-menubar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+  padding: 0 4px;
+  background: #c5c0c8;
+  border-bottom: 1px solid #a098a0;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 0.72rem;
+}
+
+.ie-menu-item {
+  padding: 1px 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #0f0713;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.ie-menu-item:hover {
+  border-color: #fff #403840 #403840 #fff;
+  background: #d8d0d8;
+}
+
+.ie-menu-item:active {
+  border-color: #403840 #fff #fff #403840;
+  background: #b8b0b8;
+}
+
+.ie-menu-item u {
+  text-decoration: underline;
+}
+
+/* Toolbar */
+.ie-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 0 4px;
+  background: #c5c0c8;
+  border-bottom: 1px solid #a098a0;
+}
+
+.ie-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.ie-tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  min-width: 24px;
+  height: 24px;
+  padding: 1px 3px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #0f0713;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
+.ie-tool-btn:hover {
+  border-color: #fff #403840 #403840 #fff;
+  background: #d8d0d8;
+}
+
+.ie-tool-btn:active {
+  border-color: #403840 #fff #fff #403840;
+  background: #b8b0b8;
+}
+
+.ie-tool-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ie-toolbar-divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 3px;
+  background: #a098a0;
+  box-shadow: 1px 0 #fff;
+}
+
+/* Address bar */
+.ie-addressbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 4px;
+  background: linear-gradient(180deg, #d0c8d0, #c5b8c8);
+  border-bottom: 1px solid #a098a0;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 0.72rem;
+}
+
+.ie-address-label {
+  color: #0f0713;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ie-address-input-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 2px;
+  height: 20px;
+  padding: 0 4px;
+  border: 1px solid #908890;
+  background: #fff;
+  box-shadow: inset 1px 1px #a098a0;
+}
+
+.ie-address-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.ie-address-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #0f0713;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+.ie-address-dropdown {
+  padding: 0 2px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #0f0713;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
+.ie-address-dropdown:hover {
+  border-color: #fff #403840 #403840 #fff;
+  background: #d8d0d8;
+}
+
+.ie-links-wrap {
+  flex: 0 0 140px;
+  background: #e8e0e8;
+}
+
+.ie-links-text {
+  flex: 1;
+  color: #0f0713;
+}
+
+/* Content area */
+.ie-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Status bar */
+.ie-statusbar {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 2px;
+  background: #c5c0c8;
+  border-top: 1px solid #fff;
+  box-shadow: inset 0 1px #a098a0;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 0.68rem;
+}
+
+.ie-status-panel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  height: 16px;
+  border: 1px solid #a098a0;
+  background: #c5c0c8;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #908890;
+  color: #0f0713;
+  white-space: nowrap;
+}
+
+.ie-status-separator {
+  width: 1px;
+  padding: 0;
+  border: none;
+  background: #a098a0;
+  box-shadow: 1px 0 #fff;
+}
+
+.ie-status-right {
+  margin-left: auto;
+}
+
+.ie-status-icon {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+/* =========================================
+   Japanese Vertical Text Decoration
+   ========================================= */
+
+.vaporwave-kanji {
+  position: fixed;
+  top: 80px;
+  left: 60px;
+  z-index: 1;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: rgba(255, 0, 160, 0.35);
+  font-family: "MS Gothic", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  line-height: 2;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 0 20px rgba(255, 0, 160, 0.25);
+}
+
+@media (max-width: 1200px) {
+  .vaporwave-kanji {
+    left: 20px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .vaporwave-kanji {
+    display: none;
+  }
+}

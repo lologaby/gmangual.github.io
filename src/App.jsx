@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero.jsx";
 import PortfolioSections from "./components/PortfolioSections.jsx";
-import VoidBackground from "./components/effects/VoidBackground.jsx";
+import VaporwaveWallpaper from "./components/effects/VaporwaveWallpaper.jsx";
+import IEFrame from "./components/ui/IEFrame.jsx";
 import BootSequence from "./components/effects/BootSequence.jsx";
 import UnderConstructionDialog from "./components/effects/UnderConstructionDialog.jsx";
 import SudoRoute from "./routes/SudoRoute.jsx";
@@ -72,26 +73,31 @@ function AppContent() {
         {!booted && <BootSequence key="boot" onComplete={() => setBooted(true)} />}
       </AnimatePresence>
 
-      <VoidBackground />
-      <div className="noise-overlay" aria-hidden="true" />
-      <div className="konami-layer" data-active={isKonamiActive} aria-hidden="true">
-        <span>Boricua ops mode unlocked</span>
-      </div>
-
-      <motion.main
-        variants={sectionVariants}
-        initial="hidden"
-        animate={booted ? "show" : "hidden"}
-      >
-        <Hero />
-        <div className="portfolio-scroll-sections">
-          <PortfolioSections />
+      <IEFrame>
+        <VaporwaveWallpaper />
+        <div className="noise-overlay" aria-hidden="true" />
+        <div className="konami-layer" data-active={isKonamiActive} aria-hidden="true">
+          <span>Boricua ops mode unlocked</span>
         </div>
-      </motion.main>
 
-      <DesktopAppWindows />
+        <div className="vaporwave-kanji" aria-hidden="true">
+          夢は現実になる
+        </div>
 
-      <footer className="taskbar" aria-label="Archive OS taskbar">
+        <motion.main
+          variants={sectionVariants}
+          initial="hidden"
+          animate={booted ? "show" : "hidden"}
+        >
+          <Hero />
+          <div className="portfolio-scroll-sections">
+            <PortfolioSections />
+          </div>
+        </motion.main>
+
+        <DesktopAppWindows />
+
+        <footer className="taskbar" aria-label="Archive OS taskbar">
         <button
           className="taskbar-start"
           type="button"
@@ -146,7 +152,8 @@ function AppContent() {
         <TaskbarClock />
       </footer>
 
-      <UnderConstructionDialog />
+        <UnderConstructionDialog />
+      </IEFrame>
     </div>
   );
 }
